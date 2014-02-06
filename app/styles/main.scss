@@ -1,0 +1,50 @@
+@import 'bootstrap-sass/lib/bootstrap';
+
+/* Project navigator */
+
+header input.form-control {
+	float: left;
+	width: 30px;
+	margin-top: 10px;
+}
+
+#ovation-user {
+	float: right;
+	margin-top: 16px;
+	margin-right: 10px;
+}
+
+#project-navigator {
+	float: left;
+	width: 20%;
+	margin-right: 1%;
+}
+
+#project-navigator .panel-group {
+	margin-top: 4px;
+}
+
+#create-project {
+	margin: auto;
+	display: block;
+}
+
+#create-experiment {
+	margin: auto;
+	display: block;
+}
+
+#experiment-navigator {
+	float: left;
+	width: 20%;
+	margin-right: 1%;
+}
+
+#experiment-navigator .list-group {
+	margin-top: 4px;
+}
+
+#entity-viewer {
+	float: left;
+	width: 57%;
+}

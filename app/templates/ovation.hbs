@@ -1,0 +1,85 @@
+<div id="ovation-content">
+	<header class="navbar navbar-default" role="banner">
+		<a class="navbar-brand">
+			<img src="images/ovation_logo.png" />
+			Ovation
+		</a>
+		<input class="form-control" type="text" placeholder="Search Ovation" />
+		<div id="ovation-user">
+			<span class="glyphicon glyphicon-user"></span> Username
+		</div>
+	</header>
+
+	<section id="project-navigator">
+		<button id="create-project" class="btn btn-success">Create Project</button>
+		<div class="panel-group" id="accordion">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+							Project 1
+						</a>
+					</h4>
+				</div>
+				<div id="collapseOne" class="panel-collapse collapse in">
+					<div class="panel-body">
+						Project 1 description
+						<ul class="list-group">
+							<li class="list-group-item">Experiment 1</li>
+							<li class="list-group-item">Experiment 2</li>
+							<li class="list-group-item">Experiment 3</li>
+							<li class="list-group-item">Experiment 4</li>
+							<li class="list-group-item">Experiment 5</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+							Project 2
+						</a>
+					</h4>
+				</div>
+				<div id="collapseTwo" class="panel-collapse collapse">
+					<div class="panel-body">
+						Project 2 description
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+							Project 3
+						</a>
+					</h4>
+				</div>
+				<div id="collapseThree" class="panel-collapse collapse">
+					<div class="panel-body">
+						Project 3 description
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="experiment-navigator">
+		<button id="create-experiment" class="btn btn-success">Create Experiment</button>
+		<ul class="list-group">
+			<li class="list-group-item">Measurement 1</li>
+			<li class="list-group-item">Measurement 2</li>
+			<li class="list-group-item">Measurement 3</li>
+			<li class="list-group-item">Measurement 4</li>
+			<li class="list-group-item">Measurement 5</li>
+		</ul>
+	</section>
+	<section id="entity-viewer">
+		<section id="entity-view" class="jumbotron">
+			Entity data viewer
+		</section>
+		<section id="entity-metadata-viewer" class="jumbotron">
+			Entity metadata viewer
+		</section>
+	</section>
+</div>
