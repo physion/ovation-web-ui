@@ -3,7 +3,7 @@
     "access" : "read|write",
     "attributes" : {
         "_id" : "{UUID}",
-        "_rev" : "{HASH}"
+        "_rev" : "{HASH}",
     },
     "links" : {
         "owner" : {
