@@ -1,0 +1,313 @@
+{
+    "type" : "{ENTITY_NAME}",
+    "access" : "read|write",
+    "attributes" : {
+        "_id": "6f7cca39-3158-4998-bae6-3edd074b77dc",
+        "_rev": "1-12306b14b5a0f99a18cb2100c2dce6d8",
+        "version": "2.1.5",
+        "start": "2012-08-28T16:46:29.000Z",
+        "end": "2012-08-28T18:58:43.000Z",
+        "startZone": "UTC",
+        "endZone": "UTC",
+        "protocol_parameters" : {
+            "DNATemplateType" : "WET_DNA",
+            "Type.Chemistry.1.Description" : "The PCR reactions contain primers designed to amplify the target sequence and SYBR® Green I dye to detect double-stranded DNA.",
+            "InstrumentTypeId" : "spyder",
+            "CHIP_CENTER_y" : "1283",
+        },
+        "device_parameters" : {},
+    },
+    "links" : {
+        "owner" : {
+            "href" : "/api/v1/entities/14c1dd90-69b3-0131-a68a-12313d009d02",
+            "count" : 1
+        },
+        "parent" : {
+            "href" : "/api/v1/entities/a53a6be0-6823-4f0f-aa4f-44171dfaa7c4",
+            "count" : 1
+        },
+        "experiments" : {
+            "href" : "/api/v1/entities/{attributes._id}/experiments",
+            "count" : 0
+        },
+        "projects" : {
+            "href" : "/api/v1/entities/{attributes._id}/projects",
+            "count" : 1
+        },
+        "attachments" : {
+            "href" : "/api/v1/entities/{attributes._id}/attachments",
+            "count" : 0
+        },
+        "protocol" : {
+            "href" : "/api/v1/entities/14c1dd90-69b3-0131-a68a-12313d009d02/protocol",
+            "count" : 0
+        },
+        "input_sources" : {
+            "Naprox_11-0030" : {
+                "href" : "/api/v1/entities/a1b862e3-ccf5-4bc1-a2b4-7ca5ce20fb65",
+                "count" : 1
+            },
+            "Naprox_11-0002" : {
+                "href" : "/api/v1/entities/0f9ee7e9-3a7b-41fa-922b-c4dded245f36",
+                "count" : 1
+            }
+        },
+        "output_sources" : {}
+    }
+}
+
+
+/*
+{
+    "_id": "6f7cca39-3158-4998-bae6-3edd074b77dc",
+    "_rev": "1-12306b14b5a0f99a18cb2100c2dce6d8",
+    "type": "Epoch",
+    "ownerUuid": "14c1dd90-69b3-0131-a68a-12313d009d02",
+    "writeGroupIds": [],
+    "resources": [],
+    "version": "2.1.5",
+    "start": "2012-08-28T16:46:29.000Z",
+    "end": "2012-08-28T18:58:43.000Z",
+    "startZone": "UTC",
+    "endZone": "UTC",
+    "experiment": "a53a6be0-6823-4f0f-aa4f-44171dfaa7c4",
+    "parent": "a53a6be0-6823-4f0f-aa4f-44171dfaa7c4",
+    "inputSources": [
+        {
+            "key": "Naprox_11-0030",
+            "value": "a1b862e3-ccf5-4bc1-a2b4-7ca5ce20fb65"
+        },
+        {
+            "key": "Naprox_11-0002",
+            "value": "0f9ee7e9-3a7b-41fa-922b-c4dded245f36"
+        }
+    ],
+    "outputSources": [],
+    "protocolParameters": [
+        {
+            "key": "DNATemplateType",
+            "value": "WET_DNA"
+        },
+        {
+            "key": "Type.Chemistry.1.Description",
+            "value": "The PCR reactions contain primers designed to amplify the target sequence and SYBR® Green I dye to detect double-stranded DNA."
+        },
+        {
+            "key": "InstrumentTypeId",
+            "value": "spyder"
+        },
+        {
+            "key": "CHIP_CENTER_y",
+            "value": "1283"
+        },
+        {
+            "key": "CHIP_CENTER_x",
+            "value": "1271"
+        },
+        {
+            "key": "Type.Chemistry.0.Description",
+            "value": "The PCR reactions contain primers designed to amplify the target sequence and a TaqMan® probe designed to detect amplification of the target sequence."
+        },
+        {
+            "key": "CommonSampleConcentrationUnits",
+            "value": "ng/μL"
+        },
+        {
+            "key": "Samples.1.Description",
+            "value": null
+        },
+        {
+            "key": "CHIP_POSITION",
+            "value": "1"
+        },
+        {
+            "key": "userId",
+            "value": "DEFAULT"
+        },
+        {
+            "key": "PreReadState",
+            "value": "INIT"
+        },
+        {
+            "key": "Samples.0.Name",
+            "value": "Naprox_11-0002"
+        },
+        {
+            "key": "Type.Chemistry.0.ID",
+            "value": "TAQMAN"
+        },
+        {
+            "key": "Type.ResultPersisterName",
+            "value": "geAnalysisResultPersister"
+        },
+        {
+            "key": "Samples.0.CustomPropertyType",
+            "value": null
+        },
+        {
+            "key": "Type.ContributedResultPersisterNames.2",
+            "value": "oaRoxAnalysisResultPersister"
+        },
+        {
+            "key": "Type.ContributedResultPersisterNames.1",
+            "value": "ampScoreAnalysisResultPersister"
+        },
+        {
+            "key": "RunEndTime",
+            "value": "1346180323445"
+        },
+        {
+            "key": "Samples.1.Concentration",
+            "value": "100.0"
+        },
+        {
+            "key": "Type.ContributedResultPersisterNames.0",
+            "value": "mcAnalysisResultPersister"
+        },
+        {
+            "key": "CommonSampleConcentration",
+            "value": "50.0"
+        },
+        {
+            "key": "TCProtocolMode",
+            "value": "Standard"
+        },
+        {
+            "key": "RUNTITLE",
+            "value": "285880066_08-28-2012_09-46-30-528"
+        },
+        {
+            "key": "UMMFactor",
+            "value": "2.0"
+        },
+        {
+            "key": "Samples.1.CustomPropertyType",
+            "value": null
+        },
+        {
+            "key": "PlateTypeID",
+            "value": "TYPE_32X96"
+        },
+        {
+            "key": "Type.Chemistry.1.Name",
+            "value": "SYBR® Green Reagents"
+        },
+        {
+            "key": "Samples.1.Name",
+            "value": "Naprox_11-0030"
+        },
+        {
+            "key": "RunState",
+            "value": "COMPLETE"
+        },
+        {
+            "key": "CocktailWastePercentage",
+            "value": "10"
+        },
+        {
+            "key": "PLATE_ID_3",
+            "value": "HYU87"
+        },
+        {
+            "key": "Samples.1.Color",
+            "value": "-33024"
+        },
+        {
+            "key": "softwareVersion",
+            "value": "QuantStudio 12K Flex Software v1.1_\"R3B2_0612120415\""
+        },
+        {
+            "key": "PPMM_m1",
+            "value": "26.758093"
+        },
+        {
+            "key": "PLATE_ID_2",
+            "value": "HYU86"
+        },
+        {
+            "key": "Samples.0.Concentration",
+            "value": "100.0"
+        },
+        {
+            "key": "PLATE_ID_1",
+            "value": "HYU85"
+        },
+        {
+            "key": "RunStartTime",
+            "value": "1346172389265"
+        },
+        {
+            "key": "PLATE_ID_0",
+            "value": "HYU84"
+        },
+        {
+            "key": "CreatedTime",
+            "value": "0"
+        },
+        {
+            "key": "Type.Description",
+            "value": "Use a reference sample and an endogenous control to determine the relative quantity of target nucleic acid sequence in samples."
+        },
+        {
+            "key": "BlockTypeID",
+            "value": "11"
+        },
+        {
+            "key": "ModifiedTime",
+            "value": "0"
+        },
+        {
+            "key": "Samples.0.Description",
+            "value": null
+        },
+        {
+            "key": "Type.Chemistry.1.ID",
+            "value": "SYBR_GREEN"
+        },
+        {
+            "key": "ChemistryType",
+            "value": "TAQMAN"
+        },
+        {
+            "key": "Name",
+            "value": "HYU85"
+        },
+        {
+            "key": "Type.Name",
+            "value": "Gene Expression"
+        },
+        {
+            "key": "Samples.0.Color",
+            "value": "-5236961"
+        },
+        {
+            "key": "FileName",
+            "value": "C:\\Users\\phovl\\Documents\\QS Files\\Merck\\Corrected Sept2012 rev2\\A7_HYU85_corrected.eds"
+        },
+        {
+            "key": "Type.Chemistry.0.Name",
+            "value": "TaqMan® Reagents"
+        },
+        {
+            "key": "Label",
+            "value": "ruo"
+        },
+        {
+            "key": "FinalAnalysisCompleted",
+            "value": "true"
+        },
+        {
+            "key": "Type.Id",
+            "value": "GE"
+        }
+    ],
+    "deviceParameters": [],
+    "projectIds": [
+        "bb1fda63-ee8a-46af-b986-958d924bfbcf"
+    ],
+    "experimentIds": [
+        "a53a6be0-6823-4f0f-aa4f-44171dfaa7c4"
+    ],
+    "entity": true
+}
+*/

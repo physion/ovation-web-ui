@@ -1,0 +1,26 @@
+{
+    "type" : "{ENTITY_NAME}",
+    "access" : "read|write",
+    "attributes" : {
+        "_id" : "{UUID}",
+        "_rev" : "{HASH}"
+    },
+    "links" : {
+        "owner" : {
+            "href" : "/api/v1/entities/{OWNER_ID}",
+            "count" : 1
+        },
+        "experiments" : {
+            "href" : "/api/v1/entities/{attributes._id}/experiments",
+            "count" : 0
+        },
+        "projects" : {
+            "href" : "/api/v1/entities/{attributes._id}/projects",
+            "count" : 1
+        },
+        "attachments" : {
+            "href" : "/api/v1/entities/{attributes._id}/attachments",
+            "count" : 0
+        }
+    }
+}
