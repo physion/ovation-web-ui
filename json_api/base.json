@@ -21,6 +21,10 @@
         "attachments" : {
             "href" : "/api/v1/entities/{attributes._id}/attachments",
             "count" : 0
+        },
+        "analysis_records" : {
+            "href" : "/api/v1/entities/{attributes._id}/analyses",
+            "count" : 0
         }
     }
 }

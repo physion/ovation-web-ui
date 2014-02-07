@@ -69,6 +69,10 @@
         "epochs" : {
             "href" : "/api/v1/entities/14c1dd90-69b3-0131-a68a-12313d009d02/epochs",
             "count" : 
+        },
+        "analysis_records" : {
+            "href" : "/api/v1/entities/{attributes._id}/analyses",
+            "count" : 0
         }
     }
 }

@@ -55,6 +55,10 @@
                     "filename" : "path/to/other/file.ext"
                 }
             ]
+        },
+        "analysis_records" : {
+            "href" : "/api/v1/entities/{attributes._id}/analyses",
+            "count" : 0
         }
     }
 }

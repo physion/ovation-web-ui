@@ -52,7 +52,14 @@
             }
         },
         "output_sources" : {},
-        "measurements" : 
+        "measurements" : {
+            "href" : "/api/v1/entities/{attributes._id}/measurements",
+            "count" : 0
+        },
+        "analysis_records" : {
+            "href" : "/api/v1/entities/{attributes._id}/analyses",
+            "count" : 0
+        }
     }
 }
 
