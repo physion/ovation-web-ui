@@ -17,6 +17,10 @@ require.config({
         bootstrap: {
             deps: ['jquery'],
             exports: 'jquery'
+        },
+        mockjax: {
+            deps: ['jquery'],
+            exports: 'jquery'
         }
     },
 
@@ -43,7 +47,10 @@ require.config({
         /* require handlebars plugin - Alex Sexton */
         i18nprecompile: '../bower_components/require-handlebars-plugin/hbs/i18nprecompile',
         json2: '../bower_components/require-handlebars-plugin/hbs/json2',
-        hbs: '../bower_components/require-handlebars-plugin/hbs'
+        hbs: '../bower_components/require-handlebars-plugin/hbs',
+
+        /* Includes for mocking services */
+        mockjax: '../bower_components/jquery-mockjax/jquery.mockjax'
     },
 
     hbs: {
