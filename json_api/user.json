@@ -1,0 +1,16 @@
+{
+    "type" : "User",
+    "access" : "read",
+    "attributes" : {
+        "_id": "14c1dd90-69b3-0131-a68a-12313d009d02",
+        "_rev": "1-deb615394fbb0ed296a32a1492da788f",
+        "username": "Alice Demo",
+        "email": "alice_demo@physion.us",
+    },
+    "links" : {
+        "attachments" : {
+            "href" : "/api/v1/entities/{attributes._id}/attachments",
+            "count" : 0
+        }
+    }
+}
