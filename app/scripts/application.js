@@ -1,42 +1,33 @@
 define([
 	'backbone',
 	'communicator',
-	'hbs!tmpl/welcome',
-	'hbs!tmpl/ovation',
-	'controllers/service',
-	'collections/project',
-	'hbs!tmpl/project'
-],
+	'controllers/Service',
+	'views/layout/OvationMain',
+	'models/OvationData'
+	],
 
-function( Backbone, Communicator, Welcome_tmpl, ovationTmpl, ServiceController, ProjectCollection, projectTmpl ) {
-    'use strict';
+	function( Backbone, Communicator, ServiceController, OvationMainLayout, OvationDataModel ) {
+		'use strict';
 
-	var welcomeTmpl = Welcome_tmpl;
+		var App = new Backbone.Marionette.Application();
 
-	var App = new Backbone.Marionette.Application();
+		/* Add initializers here */
+		App.addInitializer( function () {
 
-	/* Add application regions here */
-	App.addRegions({});
+			Communicator.mediator.trigger("APP:START");
 
-	/* Add initializers here */
-	App.addInitializer( function () {
-
-		document.body.innerHTML = ovationTmpl();
-		Communicator.mediator.trigger("APP:START");
-
-		var serviceController = new ServiceController();
-		var projects = new ProjectCollection();
-		var projectNavigator = $('#accordion');
-
-		projects.on('reset', function() {
-			projects.each(function(project, i) {
-				projectNavigator.prepend(projectTmpl(project.get('attributes')))
+			var dataModel = new OvationDataModel();
+			var ovationMainLayout = new OvationMainLayout({
+				el: '#app-layout',
+				model: dataModel
 			});
+
+			ovationMainLayout.render();
+
+			var serviceController = new ServiceController();
+			dataModel.getProjects();
+
 		});
 
-		projects.fetch({reset: true});
-
+		return App;
 	});
-
-	return App;
-});
