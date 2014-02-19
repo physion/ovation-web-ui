@@ -1,16 +1,14 @@
 define([
 	'backbone'
-],
-function( Backbone ) {
-    'use strict';
+	],
+	function( Backbone ) {
+		'use strict';
 
-	/* Return a model class definition */
-	return Backbone.Model.extend({
-		initialize: function() {
-			console.log("initialize a Project model");
-		},
+		/* Return a model class definition */
+		return Backbone.Model.extend({
+			initialize: function() {},
 
-		defaults: {},
+			defaults: {},
 
-    });
-});
+		});
+	});

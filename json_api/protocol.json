@@ -1,0 +1,54 @@
+{
+    "type" : "Protocol",
+    "access" : "write",
+    "attributes" : {
+        "_id": "05a616f8-7d71-4129-b124-c29093fb732e",
+        "_rev": "3-6db2238391395141e4827130a1ececa0",
+        "version": "2.0.0",
+        "name": "SNP variation",
+        "protocolDocument": "This is the protocol document",
+    },
+    "links" : {
+        "owner" : {
+            "href" : "/api/v1/entities/1dbbba70-08c7-0131-2b72-22000aa62e2d",
+            "count" : 1
+        },
+        "experiments" : {
+            "href" : "/api/v1/entities/{attributes._id}/experiments",
+            "count" : 0
+        },
+        "projects" : {
+            "href" : "/api/v1/entities/{attributes._id}/projects",
+            "count" : 1
+        },
+        "attachments" : {
+            "href" : "/api/v1/entities/{attributes._id}/attachments",
+            "count" : 0
+        },
+        "analysis_records" : {
+            "href" : "/api/v1/entities/{attributes._id}/analyses",
+            "count" : 0
+        }
+    }
+}
+
+/*
+{
+  "_id": "05a616f8-7d71-4129-b124-c29093fb732e",
+  "_rev": "3-6db2238391395141e4827130a1ececa0",
+  "type": "Protocol",
+  "ownerUuid": "1dbbba70-08c7-0131-2b72-22000aa62e2d",
+  "writeGroupIds": [],
+  "resources": [],
+  "version": "2.0.0",
+  "name": "SNP variation",
+  "protocolDocument": "",
+  "experimentIds": [
+    "f87d8afe-8af4-4c26-9dc5-2a499f00370e"
+  ],
+  "projectIds": [
+    "61ca1c7a-5d31-4e60-be03-f565596ca51a"
+  ],
+  "entity": true
+}
+*/
