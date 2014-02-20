@@ -10,7 +10,7 @@ define([
 			initialize: function() {
 				this.set('projects', new ProjectCollection());
 			},
-			getProjects: function() {
+			fetchProjects: function() {
 				this.get('projects').fetch({ reset: true});
 			},
 			defaults: {},

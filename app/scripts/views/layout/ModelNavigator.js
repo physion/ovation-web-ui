@@ -1,9 +1,8 @@
 define([
 	'backbone',
-	'hbs!tmpl/layout/ModelNavigator',
-	'views/collection/Project'
+	'hbs!tmpl/layout/ModelNavigator'
 	],
-	function( Backbone, ModelNavigatorTmpl, ProjectCollectionView ) {
+	function( Backbone, ModelNavigatorTmpl ) {
 		'use strict';
 
 		/* Return a Layout class definition */
@@ -22,14 +21,21 @@ define([
 			ui: {},
 
 			/* Ui events hash */
-			events: {},
+			events: {
+				'click .show-project-view': function() {
+					this.trigger('clicked:show-project-view');
+				},
+				'click .show-source-view': function() {
+					this.trigger('clicked:show-source-view');
+				},
+				'click .show-protocol-view': function() {
+					this.trigger('clicked:show-protocol-view');
+				}
+			},
 
 			/* on render callback */
-			onRender: function() {
-				this.navigatorView.show(new ProjectCollectionView({
-					collection: this.model.get('projects')
-				}));
-			}
+			onRender: function() {}
+
 		});
 
 	});
