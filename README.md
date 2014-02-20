@@ -38,3 +38,9 @@ Go to ui directory and run `grunt` to start the test server
 If you get ruby/SASS error you may need to reinstall SASS
 `sudo gem uninstall SASS` (say yes to prompts)
 `sudo gem install sass`
+
+Install bower components
+- `bower install`
+
+Start the server
+- `grunt`
