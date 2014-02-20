@@ -16,16 +16,15 @@ define([
 
 			Communicator.mediator.trigger("APP:START");
 
+			var serviceController = new ServiceController();
 			var dataModel = new OvationDataModel();
+
 			var ovationMainLayout = new OvationMainLayout({
 				el: '#app-layout',
 				model: dataModel
 			});
 
 			ovationMainLayout.render();
-
-			var serviceController = new ServiceController();
-			dataModel.getProjects();
 
 		});
 

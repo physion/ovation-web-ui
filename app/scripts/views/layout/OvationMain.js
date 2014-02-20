@@ -1,9 +1,9 @@
 define([
 	'backbone',
 	'hbs!tmpl/layout/OvationMain',
-	'views/layout/ModelNavigator'
+	'controllers/ModelNavigator'
 	],
-	function( Backbone, OvationMainTmpl, ModelNavigatorLayout  ) {
+	function( Backbone, OvationMainTmpl, ModelNavigatorController ) {
 		'use strict';
 
 		/* Return a Layout class definition */
@@ -11,7 +11,12 @@ define([
 
 			template: OvationMainTmpl,
 
-			initialize: function() {},
+			initialize: function() {
+				this.modelNavigatorController = new ModelNavigatorController({
+					model: this.model,
+					region: this.modelNavigator
+				})
+			},
 
 			/* Layout sub regions */
 			regions: {
@@ -26,7 +31,7 @@ define([
 
 			/* on render callback */
 			onRender: function() {
-				this.modelNavigator.show(new ModelNavigatorLayout({ model: this.model }));
+				this.modelNavigatorController.render();
 			}
 		});
 
