@@ -2,16 +2,15 @@ define([
 	'backbone',
 	'hbs!tmpl/item/Project'
 	],
-	function( Backbone, ProjectTmpl  ) {
+	function( Backbone, ProjectTemplate  ) {
 		'use strict';
 
 		/* Return a ItemView class definition */
 		return Backbone.Marionette.ItemView.extend({
 
 			initialize: function() {},
-
-			template: ProjectTmpl,
-
+			
+			template: ProjectTemplate,
 
 			/* ui selector cache */
 			ui: {},

@@ -1,28 +1,27 @@
 define([
 	'backbone',
-	'hbs!tmpl/item/Source_tmpl'
-],
-function( Backbone, SourceTmpl  ) {
-    'use strict';
+	'hbs!tmpl/item/Source'
+	],
+	function( Backbone, SourceTemplate  ) {
+		'use strict';
 
-	/* Return a ItemView class definition */
-	return Backbone.Marionette.ItemView.extend({
+		/* Return a ItemView class definition */
+		return Backbone.Marionette.ItemView.extend({
 
-		initialize: function() {
-			console.log("initialize a Source ItemView");
-		},
-		
-    	template: SourceTmpl,
-        
+			initialize: function() {
+				console.log("initialize a Source ItemView");
+			},
 
-    	/* ui selector cache */
-    	ui: {},
+			template: SourceTemplate,
 
-		/* Ui events hash */
-		events: {},
+			/* ui selector cache */
+			ui: {},
 
-		/* on render callback */
-		onRender: function() {}
+			/* Ui events hash */
+			events: {},
+
+			/* on render callback */
+			onRender: function() {}
+		});
+
 	});
-
-});
