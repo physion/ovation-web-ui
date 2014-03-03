@@ -8,12 +8,14 @@ define([
 		/* Return a ItemView class definition */
 		return Backbone.Marionette.ItemView.extend({
 
+			tagName: 'li',
+
 			initialize: function() {
 				console.log("initialize a Protocol ItemView");
 			},
-			
+
 			template: ProtocolTemplate,
-			
+
 			/* ui selector cache */
 			ui: {},
 

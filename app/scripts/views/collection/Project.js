@@ -7,6 +7,7 @@ define([
 
 		/* Return a ItemView class definition */
 		return Backbone.Marionette.CollectionView.extend({
+			
 			tagName: 'ul',
 
 			initialize: function() {},

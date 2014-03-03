@@ -8,8 +8,10 @@ define([
 		/* Return a ItemView class definition */
 		return Backbone.Marionette.ItemView.extend({
 
+			tagName: 'li',
+
 			initialize: function() {},
-			
+
 			template: ProjectTemplate,
 
 			/* ui selector cache */
