@@ -1,8 +1,8 @@
 define([
 	'backbone',
-	'hbs!tmpl/item/Project'
+	'hbs!tmpl/item/Source'
 	],
-	function( Backbone, ProjectTemplate  ) {
+	function( Backbone, SourceTemplate  ) {
 		'use strict';
 
 		/* Return a ItemView class definition */
@@ -10,9 +10,11 @@ define([
 
 			tagName: 'li',
 
-			initialize: function() {},
+			initialize: function() {
+				console.log("initialize a Source ItemView");
+			},
 
-			template: ProjectTemplate,
+			template: SourceTemplate,
 
 			/* ui selector cache */
 			ui: {},

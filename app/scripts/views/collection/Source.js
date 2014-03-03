@@ -1,18 +1,21 @@
 define([
 	'backbone',
-	'views/item/Project'
+	'views/item/Source'
 	],
-	function( Backbone, ProjectView  ) {
+	function( Backbone, SourceView  ) {
 		'use strict';
 
 		/* Return a ItemView class definition */
 		return Backbone.Marionette.CollectionView.extend({
-			
+
 			tagName: 'ul',
 
-			initialize: function() {},
+			initialize: function() {
+				console.log("initialize a Source CollectionView");
+			},
 
-			itemView: ProjectView,
+			itemView: SourceView,
+
 
 			/* ui selector cache */
 			ui: {},

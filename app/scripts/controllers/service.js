@@ -13,6 +13,14 @@ function( Backbone ) {
 				proxy: 'mockdata/projects.json'
 			});
 			$.mockjax({
+				url: '/api/v1/sources',
+				proxy: 'mockdata/sources.json'
+			});
+			$.mockjax({
+				url: '/api/v1/protocols',
+				proxy: 'mockdata/protocols.json'
+			});
+			$.mockjax({
 				url: '/api/v1/entities/bb1fda63-ee8a-46af-b986-958d924bfbch/experiments',
 				proxy: 'mockdata/experiments.json'
 			});

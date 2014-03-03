@@ -1,8 +1,8 @@
 define([
 	'backbone',
-	'hbs!tmpl/item/Project'
+	'hbs!tmpl/item/Protocol'
 	],
-	function( Backbone, ProjectTemplate  ) {
+	function( Backbone, ProtocolTemplate  ) {
 		'use strict';
 
 		/* Return a ItemView class definition */
@@ -10,9 +10,11 @@ define([
 
 			tagName: 'li',
 
-			initialize: function() {},
+			initialize: function() {
+				console.log("initialize a Protocol ItemView");
+			},
 
-			template: ProjectTemplate,
+			template: ProtocolTemplate,
 
 			/* ui selector cache */
 			ui: {},

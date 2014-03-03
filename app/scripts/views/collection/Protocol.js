@@ -1,18 +1,21 @@
 define([
 	'backbone',
-	'views/item/Project'
+	'views/item/Protocol'
 	],
-	function( Backbone, ProjectView  ) {
+	function( Backbone, ProtocolView  ) {
 		'use strict';
 
 		/* Return a ItemView class definition */
 		return Backbone.Marionette.CollectionView.extend({
-			
+
 			tagName: 'ul',
 
-			initialize: function() {},
+			initialize: function() {
+				console.log("initialize a Protocol CollectionView");
+			},
 
-			itemView: ProjectView,
+			itemView: ProtocolView,
+
 
 			/* ui selector cache */
 			ui: {},
