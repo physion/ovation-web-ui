@@ -1,0 +1,33 @@
+#model-navigator-region {
+	float: left;
+	width: 200px;
+}
+
+.model-navigator {
+	padding-left: 10px;
+}
+
+.navigator-controls {
+	margin-bottom: 4px;
+}
+
+.model-navigator ul {
+	padding-left: 0px;
+}
+
+.model-navigator li {
+	list-style: none;
+	cursor: pointer;
+}
+
+.model-navigator a {
+	color: #000;
+	padding: 4px 8px 4px 8px;
+	display: block;
+}
+
+.model-navigator a:hover {
+	color: #000;
+	text-decoration: none;
+	background-color: #D9D9D9;
+}
