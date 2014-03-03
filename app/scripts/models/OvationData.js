@@ -1,9 +1,10 @@
 define([
 	'backbone',
 	'collections/Project',
-	'collections/Source'
+	'collections/Source',
+	'collections/Protocol'
 	],
-	function( Backbone, ProjectCollection, SourceCollection ) {
+	function( Backbone, ProjectCollection, SourceCollection, ProtocolCollection ) {
 		'use strict';
 
 		/* Return a model class definition */
@@ -11,12 +12,16 @@ define([
 			initialize: function() {
 				this.set('projects', new ProjectCollection());
 				this.set('sources', new SourceCollection());
+				this.set('protocols', new ProtocolCollection());
 			},
 			fetchProjects: function() {
 				this.get('projects').fetch({ reset: true});
 			},
 			fetchSources: function() {
 				this.get('sources').fetch({ reset: true });
+			},
+			fetchProtocols: function() {
+				this.get('protocols').fetch({ reset: true });
 			},
 			defaults: {},
 

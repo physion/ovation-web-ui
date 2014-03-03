@@ -2,9 +2,10 @@ define([
 	'backbone',
 	'views/layout/ModelNavigator',
 	'views/collection/Project',
-	'views/collection/Source'
+	'views/collection/Source',
+	'views/collection/Protocol'
 ],
-function( Backbone, ModelNavigatorLayout, ProjectCollectionView, SourceCollectionView ) {
+function( Backbone, ModelNavigatorLayout, ProjectCollectionView, SourceCollectionView, ProtocolCollectionView ) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -39,9 +40,13 @@ function( Backbone, ModelNavigatorLayout, ProjectCollectionView, SourceCollectio
 				});
 				self.modelNavigatorLayout.navigatorView.show(self.sourceCollectionView);
 			});
-			
+
 			this.modelNavigatorLayout.on('clicked:show-protocol-view', function() {
-				this.model.fetchProtocols();
+				self.model.fetchProtocols();
+				self.protocolCollectionView = new ProtocolCollectionView({
+					collection: this.model.get('protocols')
+				});
+				self.modelNavigatorLayout.navigatorView.show(self.protocolCollectionView);
 			});
 		},
 
