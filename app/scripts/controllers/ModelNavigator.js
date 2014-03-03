@@ -31,6 +31,7 @@ function( Backbone, ModelNavigatorLayout, ProjectCollectionView, SourceCollectio
 			// View button handlers
 			this.modelNavigatorLayout.on('clicked:show-project-view', function() {
 				this.model.fetchProjects();
+				self.modelNavigatorLayout.navigatorView.show(self.projectCollectionView);
 			});
 
 			this.modelNavigatorLayout.on('clicked:show-source-view', function() {
