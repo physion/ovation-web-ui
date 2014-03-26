@@ -28,6 +28,9 @@ function( Backbone, ModelNavigatorLayout, ProjectCollectionView, SourceCollectio
 			});
 			this.model.fetchProjects();
 
+			this.region.show(this.modelNavigatorLayout);
+			this.modelNavigatorLayout.navigatorView.show(this.projectCollectionView);
+
 			// View button handlers
 			this.modelNavigatorLayout.on('clicked:show-project-view', function() {
 				this.model.fetchProjects();
@@ -49,11 +52,6 @@ function( Backbone, ModelNavigatorLayout, ProjectCollectionView, SourceCollectio
 				});
 				self.modelNavigatorLayout.navigatorView.show(self.protocolCollectionView);
 			});
-		},
-
-		render: function() {
-			this.region.show(this.modelNavigatorLayout);
-			this.modelNavigatorLayout.navigatorView.show(this.projectCollectionView);
 		}
 
 	});

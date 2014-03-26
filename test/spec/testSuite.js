@@ -6,7 +6,9 @@ define(function() {
 		specs: ['spec/collections/Protocol.js',
 		'spec/collections/Source.js',
 		'spec/collections/project.js',
+		'spec/controllers/DataView.js',
 		'spec/controllers/ModelNavigator.js',
+		'spec/controllers/OvationWeb.js',
 		'spec/controllers/service.js',
 		'spec/exampleTest.js',
 		'spec/models/Ovation.js',
@@ -19,8 +21,10 @@ define(function() {
 		'spec/views/item/Project.js',
 		'spec/views/item/Protocol.js',
 		'spec/views/item/Source.js',
+		'spec/views/layout/DataView.js',
 		'spec/views/layout/ModelNavigator.js',
-		'spec/views/layout/OvationMain.js'
+		'spec/views/layout/OvationMain.js',
+		'spec/views/layout/OvationWeb.js'
 		]
 	};
 });

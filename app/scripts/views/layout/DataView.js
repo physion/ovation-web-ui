@@ -1,22 +1,18 @@
 define([
 	'backbone',
-	'hbs!tmpl/layout/OvationMain',
-	'controllers/ModelNavigator'
+	'hbs!tmpl/layout/DataView'
 	],
-	function( Backbone, OvationMainTmpl, ModelNavigatorController ) {
+	function( Backbone, DataViewTmpl  ) {
 		'use strict';
 
 		/* Return a Layout class definition */
 		return Backbone.Marionette.Layout.extend({
 
-			template: OvationMainTmpl,
-
 			initialize: function() {
-				this.modelNavigatorController = new ModelNavigatorController({
-					model: this.model,
-					region: this.modelNavigator
-				})
+				console.log("initialize a Dataview Layout");
 			},
+			
+			template: DataViewTmpl,
 
 			/* Layout sub regions */
 			regions: {
@@ -30,9 +26,7 @@ define([
 			events: {},
 
 			/* on render callback */
-			onRender: function() {
-				this.modelNavigatorController.render();
-			}
+			onRender: function() {}
 		});
 
 	});
