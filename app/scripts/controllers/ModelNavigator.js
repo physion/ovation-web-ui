@@ -1,57 +1,23 @@
 define([
 	'backbone',
 	'views/layout/ModelNavigator',
-	'views/collection/Project',
-	'views/collection/Source',
-	'views/collection/Protocol'
+	'views/ModelNavigatorPanels'
 ],
-function( Backbone, ModelNavigatorLayout, ProjectCollectionView, SourceCollectionView, ProtocolCollectionView ) {
+function( Backbone, ModelNavigatorLayout, ModelNavigatorPanelsView ) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
 
 		initialize: function( options ) {
-
-			var self = this;
+			var modelNavigatorLayout = new ModelNavigatorLayout(),
+			
+				// Default navigator view
+				modelNavigatorPanelsView = new ModelNavigatorPanelsView();
 
 			this.model = options.model;
 			this.region = options.region;
-
-			this.modelNavigatorLayout = new ModelNavigatorLayout({
-				model: this.model
-			});
-
-			// Initialize with the project view
-			// TODO: Use a cookie to store the last view
-			this.projectCollectionView = new ProjectCollectionView({
-				collection: this.model.get('projects')
-			});
-			this.model.fetchProjects();
-
-			this.region.show(this.modelNavigatorLayout);
-			this.modelNavigatorLayout.navigatorView.show(this.projectCollectionView);
-
-			// View button handlers
-			this.modelNavigatorLayout.on('clicked:show-project-view', function() {
-				this.model.fetchProjects();
-				self.modelNavigatorLayout.navigatorView.show(self.projectCollectionView);
-			});
-
-			this.modelNavigatorLayout.on('clicked:show-source-view', function() {
-				self.model.fetchSources();
-				self.sourceCollectionView = new SourceCollectionView({
-					collection: this.model.get('sources')
-				});
-				self.modelNavigatorLayout.navigatorView.show(self.sourceCollectionView);
-			});
-
-			this.modelNavigatorLayout.on('clicked:show-protocol-view', function() {
-				self.model.fetchProtocols();
-				self.protocolCollectionView = new ProtocolCollectionView({
-					collection: this.model.get('protocols')
-				});
-				self.modelNavigatorLayout.navigatorView.show(self.protocolCollectionView);
-			});
+			this.region.show(modelNavigatorLayout);
+			modelNavigatorLayout.activeViewRegion.show(modelNavigatorPanelsView);
 		}
 
 	});
