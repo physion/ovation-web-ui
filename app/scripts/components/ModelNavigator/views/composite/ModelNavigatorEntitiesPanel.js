@@ -1,7 +1,7 @@
 define([
 	'backbone',
-	'views/item/ModelNavigatorPanelEntity',
-	'hbs!tmpl/composite/ModelNavigatorEntities'
+	'../item/ModelNavigatorPanelEntity',
+	'hbs!../../templates/composite/ModelNavigatorEntities'
 	],
 	function( Backbone, ModelNavigatorPanelEntityView, ModelNavigatorEntitiesTemplate  ) {
 		'use strict';

@@ -1,9 +1,9 @@
 define([
 	'backbone',
-	'views/ModelNavigatorPanels',
-	'views/ModelNavigatorDefaultPanel',
-	'collections/ModelNavigatorEntities',
-	'views/composite/ModelNavigatorEntitiesPanel'
+	'../views/ModelNavigatorPanels',
+	'../views/ModelNavigatorDefaultPanel',
+	'../collections/ModelNavigatorEntities',
+	'../views/composite/ModelNavigatorEntitiesPanel'
 	],
 	function( Backbone, ModelNavigatorPanelsView, ModelNavigatorDefaultPanelView, ModelNavigatorEntitiesCollection, ModelNavigatorEntitiesPanelView ) {
 		'use strict';

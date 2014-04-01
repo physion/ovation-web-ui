@@ -1,6 +1,6 @@
 define([
 	'backbone',
-	'hbs!tmpl/item/ModelNavigatorEntity'
+	'hbs!../../templates/item/ModelNavigatorEntity'
 	],
 	function( Backbone, ModelNavigatorEntityTemplate  ) {
 		'use strict';

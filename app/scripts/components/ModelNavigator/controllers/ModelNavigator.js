@@ -1,7 +1,7 @@
 define([
 	'backbone',
-	'views/layout/ModelNavigator',
-	'controllers/ModelNavigatorPanels'
+	'../views/layout/ModelNavigator',
+	'./ModelNavigatorPanels'
 ],
 function( Backbone, ModelNavigatorLayout, ModelNavigatorPanelsController ) {
     'use strict';

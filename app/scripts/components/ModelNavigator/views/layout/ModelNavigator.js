@@ -1,6 +1,6 @@
 define([
 	'backbone',
-	'hbs!tmpl/layout/ModelNavigator'
+	'hbs!../../templates/layout/ModelNavigator'
 	],
 	function( Backbone, ModelNavigatorTemplate  ) {
 		'use strict';

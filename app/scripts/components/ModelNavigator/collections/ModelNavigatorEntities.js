@@ -1,6 +1,6 @@
 define([
 	'backbone',
-	'models/ModelNavigatorEntity'
+	'../models/ModelNavigatorEntity'
 	],
 	function( Backbone, ModelNavigatorEntity ) {
 		'use strict';
