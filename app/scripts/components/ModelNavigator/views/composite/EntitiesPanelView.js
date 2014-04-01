@@ -1,22 +1,21 @@
 define([
 	'backbone',
-	'views/item/ModelNavigatorPanelEntity',
-	'hbs!tmpl/composite/ModelNavigatorEntities'
+	'../item/PanelEntityView',
+	'hbs!../../templates/composite/EntitiesPanelViewTemplate'
 	],
-	function( Backbone, ModelNavigatorPanelEntityView, ModelNavigatorEntitiesTemplate  ) {
+	function( Backbone, PanelEntityView, EntitiesPanelViewTemplate  ) {
 		'use strict';
 
 		/* Return a CompositeView class definition */
 		return Backbone.Marionette.CompositeView.extend({
 			className: 'model-navigator-panel',
 			initialize: function() {
-				console.log("initialize a Modelnavigatorentities CompositeView");
 				this.$el.attr('data-cid', this.cid);
 			},
 
-			itemView: ModelNavigatorPanelEntityView,
+			itemView: PanelEntityView,
 
-			template: ModelNavigatorEntitiesTemplate,
+			template: EntitiesPanelViewTemplate,
 
 
 			/* ui selector cache */

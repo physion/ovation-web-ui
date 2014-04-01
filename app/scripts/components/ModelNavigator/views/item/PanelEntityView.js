@@ -1,18 +1,16 @@
 define([
 	'backbone',
-	'hbs!tmpl/item/ModelNavigatorEntity'
+	'hbs!../../templates/item/EntityViewTemplate'
 	],
-	function( Backbone, ModelNavigatorEntityTemplate  ) {
+	function( Backbone, EntityViewTemplate  ) {
 		'use strict';
 
 		/* Return a ItemView class definition */
 		return Backbone.Marionette.ItemView.extend({
 
-			initialize: function() {
-				console.log("initialize a Modelnavigatorentity ItemView");
-			},
+			initialize: function() {},
 			
-			template: ModelNavigatorEntityTemplate,
+			template: EntityViewTemplate,
 			
 
 			/* ui selector cache */

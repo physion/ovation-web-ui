@@ -1,7 +1,7 @@
 define([
 	'backbone',
 	'views/layout/DataView',
-	'controllers/ModelNavigator'
+	'components/ModelNavigator/controllers/ModelNavigator'
 ],
 function( Backbone, DataViewLayout, ModelNavigatorController ) {
     'use strict';

@@ -1,18 +1,16 @@
 define([
 	'backbone',
-	'hbs!tmpl/layout/ModelNavigator'
+	'hbs!../../templates/layout/MainLayoutTemplate'
 	],
-	function( Backbone, ModelNavigatorTemplate  ) {
+	function( Backbone, MainLayoutTemplate  ) {
 		'use strict';
 
 		/* Return a Layout class definition */
 		return Backbone.Marionette.Layout.extend({
 			className: 'model-navigator',
-			template: ModelNavigatorTemplate,
+			template: MainLayoutTemplate,
 
-			initialize: function() {
-				console.log("initialize a Modelnavigator Layout");
-			},
+			initialize: function() {},
 
 			/* Layout sub regions */
 			regions: {
