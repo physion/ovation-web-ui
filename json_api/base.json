@@ -4,6 +4,35 @@
     "attributes" : {
         "_id" : "{UUID}",
         "_rev" : "{HASH}",
+        "tags" : {
+            "{USER1_ID}" : ["foo", "bar"],
+            "{USER2_ID}" : ["baz"]
+        },
+        "properties" : {
+            "{USER1_ID}" : {
+                "key1" : 1,
+                "key2" : 2
+            },
+            "{USER2_ID}" : {}
+        },
+        "notes" : {
+            "{USER1_ID}" : [
+                {
+                    "timestamp" : "...",
+                    "text" : "Note text"
+                }
+            ]
+        },
+        "timeline_events" : {
+            "{USER1_ID}" : [
+                {
+                    "name" : "...",
+                    "text" : "...",
+                    "start" : "{timestamp}",
+                    "end" : "{timestamp|optional}"
+                }
+            ]
+        }
     },
     "links" : {
         "owner" : {
