@@ -10,7 +10,6 @@ define([
 		return Backbone.Marionette.CompositeView.extend({
 			className: 'model-navigator-panel',
 			initialize: function() {
-				console.log("initialize a Modelnavigatorentities CompositeView");
 				this.$el.attr('data-cid', this.cid);
 			},
 

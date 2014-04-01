@@ -10,9 +10,7 @@ define([
 			className: 'model-navigator',
 			template: MainLayoutTemplate,
 
-			initialize: function() {
-				console.log("initialize a Modelnavigator Layout");
-			},
+			initialize: function() {},
 
 			/* Layout sub regions */
 			regions: {

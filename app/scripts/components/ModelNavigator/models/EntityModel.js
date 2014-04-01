@@ -6,9 +6,7 @@ define([
 
 		/* Return a model class definition */
 		return Backbone.Model.extend({
-			initialize: function() {
-				console.log("initialize a Modelnavigatorentity model");
-			},
+			initialize: function() {},
 
 			defaults: {},
 
