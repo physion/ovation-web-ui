@@ -1,22 +1,22 @@
 define([
 	'backbone',
-	'hbs!tmpl/layout/ModelNavigator'
+	'hbs!tmpl/layout/OvationWeb'
 	],
-	function( Backbone, ModelNavigatorTemplate  ) {
+	function( Backbone, OvationWebTmpl  ) {
 		'use strict';
 
 		/* Return a Layout class definition */
 		return Backbone.Marionette.Layout.extend({
-			className: 'model-navigator',
-			template: ModelNavigatorTemplate,
 
 			initialize: function() {
-				console.log("initialize a Modelnavigator Layout");
+				console.log("initialize a Ovationweb Layout");
 			},
+
+			template: OvationWebTmpl,
 
 			/* Layout sub regions */
 			regions: {
-				activeViewRegion: '.model-navigator-active-view-region'
+				mainContent: '#main-content'
 			},
 
 			/* ui selector cache */

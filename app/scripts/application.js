@@ -2,11 +2,10 @@ define([
 	'backbone',
 	'communicator',
 	'controllers/Service',
-	'views/layout/OvationMain',
-	'models/OvationData'
+	'controllers/OvationWeb'
 	],
 
-	function( Backbone, Communicator, ServiceController, OvationMainLayout, OvationDataModel ) {
+	function( Backbone, Communicator, ServiceController, OvationWebController ) {
 		'use strict';
 
 		var App = new Backbone.Marionette.Application();
@@ -16,15 +15,10 @@ define([
 
 			Communicator.mediator.trigger("APP:START");
 
+			// Service controller for intercepting ajax requests
 			var serviceController = new ServiceController();
-			var dataModel = new OvationDataModel();
-
-			var ovationMainLayout = new OvationMainLayout({
-				el: '#app-layout',
-				model: dataModel
-			});
-
-			ovationMainLayout.render();
+			
+			var ovationWebController = new OvationWebController();
 
 		});
 
