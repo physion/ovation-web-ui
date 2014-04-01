@@ -1,23 +1,23 @@
 define([
 	'backbone',
 	'views/layout/ModelNavigator',
-	'views/ModelNavigatorPanels'
+	'controllers/ModelNavigatorPanels'
 ],
-function( Backbone, ModelNavigatorLayout, ModelNavigatorPanelsView ) {
+function( Backbone, ModelNavigatorLayout, ModelNavigatorPanelsController ) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
 
 		initialize: function( options ) {
 			var modelNavigatorLayout = new ModelNavigatorLayout(),
-			
-				// Default navigator view
-				modelNavigatorPanelsView = new ModelNavigatorPanelsView();
+				model = options.model,
+				region = options.region,
+				modelNavigatorPanelsController;
 
-			this.model = options.model;
-			this.region = options.region;
-			this.region.show(modelNavigatorLayout);
-			modelNavigatorLayout.activeViewRegion.show(modelNavigatorPanelsView);
+			region.show(modelNavigatorLayout);
+			modelNavigatorPanelsController = new ModelNavigatorPanelsController({
+				region: modelNavigatorLayout.activeViewRegion
+			});
 		}
 
 	});

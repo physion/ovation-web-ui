@@ -1,9 +1,8 @@
 define([
 	'backbone',
-	'views/ModelNavigatorDefaultPanel',
 	'hbs!tmpl/ModelNavigatorPanels'
 	],
-	function(Backbone, ModelNavigatorDefaultPanelView, ModelNavigatorPanelsTemplate ){
+	function(Backbone, ModelNavigatorPanelsTemplate ){
 		'use strict';
 
 		return Backbone.View.extend({
@@ -12,19 +11,16 @@ define([
 
 			initialize: function() {
 				this.$el.append(this.template());
-				var container = new Backbone.ChildViewContainer(),
-
-					// By default the panels will will show links for Projects, Sources, and Protocols
-					defaultView = new ModelNavigatorDefaultPanelView(),
-					viewContainerEl = this.$el.find('.model-navigator-panels-container');
-
-				viewContainerEl.append(defaultView.$el);
-				container.add(defaultView);
+				this.viewContainerEl = this.$el.find('.model-navigator-panels-container');
 			},
 
 			events: {
 				'click .panel-link': function(e) {
-					console.log($(e.currentTarget).attr('href'));
+					var panel = $(e.currentTarget).closest('.model-navigator-panel');
+					this.trigger('link-clicked', {
+						viewcid: panel.attr('data-cid'),
+						href: $(e.currentTarget).attr('href')
+					});
 					return false;
 				}
 			}
