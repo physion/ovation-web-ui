@@ -30,17 +30,22 @@ Install marionette generator
 Update gem
 - `sudo gem update —system`
 
-Install compass
-- `sudo gem install compass`
+Install compass (you should probably be using rvm, so no sudo required)
+- `[sudo] gem install compass`
 
-Go to ui directory and run `grunt` to start the test server
+From the project directory...
 
-If you get ruby/SASS error you may need to reinstall SASS
-`sudo gem uninstall SASS` (say yes to prompts)
-`sudo gem install sass`
+If this is the first run of the project, install node dependencies
+- `node install`
 
 Install bower components
 - `bower install`
+
+Run `grunt` to start the test server
+
+If you get ruby/SASS error you may need to reinstall SASS
+`[sudo] gem uninstall SASS` (say yes to prompts)
+`[sudo] gem install sass`
 
 Start the server
 - `grunt`
