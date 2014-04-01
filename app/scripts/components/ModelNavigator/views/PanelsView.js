@@ -1,13 +1,13 @@
 define([
 	'backbone',
-	'hbs!../templates/ModelNavigatorPanels'
+	'hbs!../templates/PanelsViewTemplate'
 	],
-	function(Backbone, ModelNavigatorPanelsTemplate ){
+	function(Backbone, PanelsViewTemplate ){
 		'use strict';
 
 		return Backbone.View.extend({
 			className: 'model-navigator-panels',
-			template: ModelNavigatorPanelsTemplate,
+			template: PanelsViewTemplate,
 
 			initialize: function() {
 				this.$el.append(this.template());

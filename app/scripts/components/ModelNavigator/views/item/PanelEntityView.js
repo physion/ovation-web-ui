@@ -1,8 +1,8 @@
 define([
 	'backbone',
-	'hbs!../../templates/item/ModelNavigatorEntity'
+	'hbs!../../templates/item/EntityViewTemplate'
 	],
-	function( Backbone, ModelNavigatorEntityTemplate  ) {
+	function( Backbone, EntityViewTemplate  ) {
 		'use strict';
 
 		/* Return a ItemView class definition */
@@ -12,7 +12,7 @@ define([
 				console.log("initialize a Modelnavigatorentity ItemView");
 			},
 			
-			template: ModelNavigatorEntityTemplate,
+			template: EntityViewTemplate,
 			
 
 			/* ui selector cache */

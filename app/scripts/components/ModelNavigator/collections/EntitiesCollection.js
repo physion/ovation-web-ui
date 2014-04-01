@@ -1,8 +1,8 @@
 define([
 	'backbone',
-	'../models/ModelNavigatorEntity'
+	'../models/EntityModel'
 	],
-	function( Backbone, ModelNavigatorEntity ) {
+	function( Backbone, EntityModel ) {
 		'use strict';
 
 		/* Return a collection class definition */
@@ -11,7 +11,7 @@ define([
 				console.log("initialize a Modelnavigatorentities collection");
 			},
 
-			model: ModelNavigatorEntity
+			model: EntityModel
 
 		});
 	});

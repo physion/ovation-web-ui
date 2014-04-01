@@ -1,11 +1,11 @@
 define([
 	'backbone',
-	'../views/ModelNavigatorPanels',
-	'../views/ModelNavigatorDefaultPanel',
-	'../collections/ModelNavigatorEntities',
-	'../views/composite/ModelNavigatorEntitiesPanel'
+	'../views/PanelsView',
+	'../views/DefaultPanelView',
+	'../collections/EntitiesCollection',
+	'../views/composite/EntitiesPanelView'
 	],
-	function( Backbone, ModelNavigatorPanelsView, ModelNavigatorDefaultPanelView, ModelNavigatorEntitiesCollection, ModelNavigatorEntitiesPanelView ) {
+	function( Backbone, PanelsView, DefaultPanelView, EntitiesCollection, EntitiesPanelView ) {
 		'use strict';
 
 		return Backbone.Marionette.Controller.extend({
@@ -14,21 +14,21 @@ define([
 
 				// Region provided by parent
 				var region = options.region,
-					modelNavigatorPanelsView = new ModelNavigatorPanelsView(),
+					panelsView = new PanelsView(),
 
 					// Babysitter to manage panels
 					viewBabysitter = new Backbone.ChildViewContainer(),
 
 					// Initialize the default panel to provide starting links for projects, sources, protocols
-					defaultView = new ModelNavigatorDefaultPanelView();
+					defaultView = new DefaultPanelView();
 
 				// Show the default panel
-				region.show(modelNavigatorPanelsView);
+				region.show(panelsView);
 				viewBabysitter.add(defaultView);
-				modelNavigatorPanelsView.viewContainerEl.append(defaultView.$el);
+				panelsView.viewContainerEl.append(defaultView.$el);
 				
 				// Handler for entity link click
-				modelNavigatorPanelsView.on('link-clicked', function(clickData) {
+				panelsView.on('link-clicked', function(clickData) {
 
 					// When the user clicks a link we want to clear any existing panels after it
 					var clickedPanelFound = false,
@@ -56,10 +56,10 @@ define([
 						success: function(data) {
 
 							// Create a new collection for the returned entities
-							var entitiesCollection = new ModelNavigatorEntitiesCollection(),
+							var entitiesCollection = new EntitiesCollection(),
 
 								// Initialize a panel view to display the entities
-								newPanel = new ModelNavigatorEntitiesPanelView({
+								newPanel = new EntitiesPanelView({
 									collection: entitiesCollection
 								});
 
@@ -67,9 +67,9 @@ define([
 							newPanel.render();
 							entitiesCollection.reset(data);
 							viewBabysitter.add(newPanel);
-							modelNavigatorPanelsView.viewContainerEl.append(newPanel.$el);
+							panelsView.viewContainerEl.append(newPanel.$el);
 							var newContainerWidth = newPanel.$el.outerWidth() * viewBabysitter.length;
-							modelNavigatorPanelsView.viewContainerEl.width(newContainerWidth);
+							panelsView.viewContainerEl.width(newContainerWidth);
 						}
 					});
 				})

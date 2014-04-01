@@ -1,9 +1,9 @@
 define([
 	'backbone',
-	'../item/ModelNavigatorPanelEntity',
-	'hbs!../../templates/composite/ModelNavigatorEntities'
+	'../item/PanelEntityView',
+	'hbs!../../templates/composite/EntitiesPanelViewTemplate'
 	],
-	function( Backbone, ModelNavigatorPanelEntityView, ModelNavigatorEntitiesTemplate  ) {
+	function( Backbone, PanelEntityView, EntitiesPanelViewTemplate  ) {
 		'use strict';
 
 		/* Return a CompositeView class definition */
@@ -14,9 +14,9 @@ define([
 				this.$el.attr('data-cid', this.cid);
 			},
 
-			itemView: ModelNavigatorPanelEntityView,
+			itemView: PanelEntityView,
 
-			template: ModelNavigatorEntitiesTemplate,
+			template: EntitiesPanelViewTemplate,
 
 
 			/* ui selector cache */
