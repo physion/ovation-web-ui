@@ -26,7 +26,15 @@ define([
 			events: {},
 
 			/* on render callback */
-			onRender: function() {}
+			onRender: function() {},
+
+			onShowCalled: function() {
+				
+				// Resize the navigator region to 100% of the available height
+				var navRegion = this.$el.find('#model-navigator-region'),
+					regionTop = navRegion.position().top;
+				navRegion.height($(window).height() -  regionTop);
+			}
 		});
 
 	});

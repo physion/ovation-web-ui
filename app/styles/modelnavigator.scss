@@ -4,30 +4,37 @@
 }
 
 .model-navigator {
-	padding-left: 10px;
+	height: 100%;
+	width: 100%;
 }
 
-.navigator-controls {
-	margin-bottom: 4px;
+.model-navigator-active-view-region {
+	height: 94%;
+	width: 100%;
 }
 
-.model-navigator ul {
-	padding-left: 0px;
+.model-navigator-panels {
+	height: 100%;
+	overflow-x: scroll;
+	width: 100%;
 }
 
-.model-navigator li {
+.model-navigator-panels-container {
+	height: 100%;
+}
+
+.model-navigator-panel {
+	border-right: 1px solid #d9d9d9;
+	float: left;
+	height: 100%;
+	padding: 6px;
+	width: 150px;
+}
+
+.model-navigator-panel ul {
+	padding: 0;
+}
+
+.model-navigator-panel li {
 	list-style: none;
-	cursor: pointer;
-}
-
-.model-navigator a {
-	color: #000;
-	padding: 4px 8px 4px 8px;
-	display: block;
-}
-
-.model-navigator a:hover {
-	color: #000;
-	text-decoration: none;
-	background-color: #D9D9D9;
 }

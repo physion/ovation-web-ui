@@ -68,7 +68,7 @@ define([
 							entitiesCollection.reset(data);
 							viewBabysitter.add(newPanel);
 							modelNavigatorPanelsView.viewContainerEl.append(newPanel.$el);
-							var newContainerWidth = newPanel.$el.width() * viewBabysitter.length;
+							var newContainerWidth = newPanel.$el.outerWidth() * viewBabysitter.length;
 							modelNavigatorPanelsView.viewContainerEl.width(newContainerWidth);
 						}
 					});
