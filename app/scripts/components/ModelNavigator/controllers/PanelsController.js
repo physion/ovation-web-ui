@@ -3,9 +3,10 @@ define([
 	'../views/PanelsView',
 	'../views/DefaultPanelView',
 	'../collections/EntitiesCollection',
-	'../views/composite/EntitiesPanelView'
+	'../views/composite/EntitiesPanelView',
+	'communicator'
 	],
-	function( Backbone, PanelsView, DefaultPanelView, EntitiesCollection, EntitiesPanelView ) {
+	function( Backbone, PanelsView, DefaultPanelView, EntitiesCollection, EntitiesPanelView, Communicator ) {
 		'use strict';
 
 		return Backbone.Marionette.Controller.extend({
@@ -28,7 +29,7 @@ define([
 				panelsView.viewContainerEl.append(defaultView.$el);
 				
 				// Handler for entity link click
-				panelsView.on('link-clicked', function(clickData) {
+				Communicator.mediator.on('panel:click', function(eData) {
 
 					// When the user clicks a link we want to clear any existing panels after it
 					var clickedPanelFound = false,
@@ -39,7 +40,7 @@ define([
 						if(clickedPanelFound) {
 							viewsToRemove.push(view);
 						}
-						else if(view.cid === clickData.viewcid) {
+						else if(view.cid === eData.view.cid) {
 							clickedPanelFound = true;
 						}
 					});
@@ -50,7 +51,7 @@ define([
 
 					// Get the data for the next panel
 					$.ajax({
-						url: clickData.href,
+						url: eData.entityLinkModel.get('href'),
 						type: 'GET',
 						dataType: 'json',
 						success: function(data) {
@@ -61,18 +62,20 @@ define([
 								// Initialize a panel view to display the entities
 								newPanel = new EntitiesPanelView({
 									collection: entitiesCollection
-								});
+								}),
+								newContainerWidth;
 
 							// Show panel
 							newPanel.render();
 							entitiesCollection.reset(data);
 							viewBabysitter.add(newPanel);
 							panelsView.viewContainerEl.append(newPanel.$el);
-							var newContainerWidth = newPanel.$el.outerWidth() * viewBabysitter.length;
+							newContainerWidth = newPanel.$el.outerWidth() * viewBabysitter.length;
 							panelsView.viewContainerEl.width(newContainerWidth);
 						}
 					});
-				})
+				});
+
 			}
 		});
 	});

@@ -21,6 +21,9 @@ require.config({
         mockjax: {
             deps: ['jquery'],
             exports: 'jquery'
+        },
+        communicator: {
+            deps: ['backbone']
         }
     },
 
@@ -50,7 +53,9 @@ require.config({
         hbs: '../bower_components/require-handlebars-plugin/hbs',
 
         /* Includes for mocking services */
-        mockjax: '../bower_components/jquery-mockjax/jquery.mockjax'
+        mockjax: '../bower_components/jquery-mockjax/jquery.mockjax',
+
+        communicator: 'communicator'
     },
 
     hbs: {
