@@ -21,17 +21,28 @@ function( Backbone ) {
 				proxy: 'mockdata/protocols.json'
 			});
 			$.mockjax({
-				url: '/api/v1/entities/bb1fda63-ee8a-46af-b986-958d924bfbch/experiments',
+				url: /^\/api\/v1\/entities\/.*experiments/,
 				proxy: 'mockdata/experiments.json'
 			});
 			$.mockjax({
-				url: '/api/v1/entities/14c1dd90-69b3-0131-a68a-12313d009d02/epochs',
+				url: /^\/api\/v1\/entities\/.*projects/,
+				proxy: 'mockdata/projects.json'
+			});
+			$.mockjax({
+				url: /^\/api\/v1\/entities\/.*protocol/,
+				proxy: 'mockdata/protocols.json'
+			});
+			$.mockjax({
+				url: /^\/api\/v1\/entities\/.*epochs/,
 				proxy: 'mockdata/epochs.json'
 			});
 			$.mockjax({
-				url: '/api/v1/entities/6f7cca39-3158-4998-bae6-3edd074b77dc/measurements',
+				url: /^\/api\/v1\/entities\/.*measurements/,
 				proxy: 'mockdata/measurements.json'
 			});
+			/*
+			Need attachments, analysis_records, equipment setup, epoch groups, 
+			*/
 		}
 	});
 
