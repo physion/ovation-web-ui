@@ -13,6 +13,8 @@ define([
 			
 			initialize: function() {
 				this.listenTo(this, "itemview:entitylink:click", function(context, entityLinkModel) {
+					context.$el.siblings().removeClass('active');
+					context.$el.addClass('active');
 					this.trigger("entitylink:click", entityLinkModel);
 				})
 			},

@@ -17,9 +17,12 @@ define([
 			},
 
 			'events': {
-				'click a': function(e) {
-					var entityLinkModel = new EntityLinkModel();
-					entityLinkModel.set('href', $(e.currentTarget).attr('href'));
+				'click li': function(e) {
+					var entityLinkModel = new EntityLinkModel(),
+						$li = $(e.currentTarget);
+					entityLinkModel.set('href', $li.attr('data-href'));
+					$li.siblings().removeClass('active');
+					$li.addClass('active');
 					Communicator.mediator.trigger('panel:click', {
 						entityLinkModel: entityLinkModel,
 						view: this

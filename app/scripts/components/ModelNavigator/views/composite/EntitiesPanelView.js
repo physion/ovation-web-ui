@@ -12,6 +12,8 @@ define([
 			className: 'model-navigator-panel',
 			initialize: function() {
 				this.listenTo(this, "itemview:entitylink:click", function(context, entityLinkModel) {
+					context.$el.siblings().find('li').removeClass('active').end().removeClass('active');
+					context.$el.addClass('active');
 					Communicator.mediator.trigger("panel:click", {
 						entityLinkModel: entityLinkModel,
 						view: this
