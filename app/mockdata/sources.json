@@ -7,7 +7,8 @@
         "_rev": "1-de5bb5f8ff628274b6fe0fe6251b6e49",
         "version": "2.1.5",
         "label": "Naprox_11-0002",
-        "identifier": "Naprox_11-0002"
+        "identifier": "Naprox_11-0002",
+        "name": "Naprox_11-0002"
     },
     "links" : {
         "owner" : {
@@ -15,23 +16,23 @@
             "count" : 1
         },
         "experiments" : {
-            "href" : "/api/v1/entities/{attributes._id}/experiments",
+            "href" : "/api/v1/entities/0f9ee7e9-3a7b-41fa-922b-c4dded245f36/experiments",
             "count" : 0
         },
         "projects" : {
-            "href" : "/api/v1/entities/{attributes._id}/projects",
+            "href" : "/api/v1/entities/0f9ee7e9-3a7b-41fa-922b-c4dded245f36/projects",
             "count" : 1
         },
         "attachments" : {
-            "href" : "/api/v1/entities/{attributes._id}/attachments",
+            "href" : "/api/v1/entities/0f9ee7e9-3a7b-41fa-922b-c4dded245f36/attachments",
             "count" : 0
         },
         "analysis_records" : {
-            "href" : "/api/v1/entities/{attributes._id}/analyses",
+            "href" : "/api/v1/entities/0f9ee7e9-3a7b-41fa-922b-c4dded245f36/analyses",
             "count" : 0
         },
         "children" : {
-            "href" : "/api/v1/entities/{attributes._id}/children",
+            "href" : "/api/v1/entities/0f9ee7e9-3a7b-41fa-922b-c4dded245f36/children",
             "count" : 0
         }
     }
@@ -44,7 +45,8 @@
         "_rev": "1-de5bb5f8ff628274b6fe0fe6251b6e48",
         "version": "2.1.5",
         "label": "Naprox_11-0003",
-        "identifier": "Naprox_11-0003"
+        "identifier": "Naprox_11-0003",
+        "name": "Naprox_11-0003"
     },
     "links" : {
         "owner" : {
@@ -52,23 +54,23 @@
             "count" : 1
         },
         "experiments" : {
-            "href" : "/api/v1/entities/{attributes._id}/experiments",
+            "href" : "/api/v1/entities/0f9ee7e9-3a7b-41fa-922b-c4dded245f37/experiments",
             "count" : 0
         },
         "projects" : {
-            "href" : "/api/v1/entities/{attributes._id}/projects",
+            "href" : "/api/v1/entities/0f9ee7e9-3a7b-41fa-922b-c4dded245f37/projects",
             "count" : 1
         },
         "attachments" : {
-            "href" : "/api/v1/entities/{attributes._id}/attachments",
+            "href" : "/api/v1/entities/0f9ee7e9-3a7b-41fa-922b-c4dded245f37/attachments",
             "count" : 0
         },
         "analysis_records" : {
-            "href" : "/api/v1/entities/{attributes._id}/analyses",
+            "href" : "/api/v1/entities/0f9ee7e9-3a7b-41fa-922b-c4dded245f37/analyses",
             "count" : 0
         },
         "children" : {
-            "href" : "/api/v1/entities/{attributes._id}/children",
+            "href" : "/api/v1/entities/0f9ee7e9-3a7b-41fa-922b-c4dded245f37/children",
             "count" : 0
         }
     }

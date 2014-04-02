@@ -1,16 +1,22 @@
 define([
 	'backbone',
+	'communicator',
 	'../item/PanelEntityView',
 	'hbs!../../templates/composite/EntitiesPanelViewTemplate'
 	],
-	function( Backbone, PanelEntityView, EntitiesPanelViewTemplate  ) {
+	function( Backbone, Communicator, PanelEntityView, EntitiesPanelViewTemplate  ) {
 		'use strict';
 
 		/* Return a CompositeView class definition */
 		return Backbone.Marionette.CompositeView.extend({
 			className: 'model-navigator-panel',
 			initialize: function() {
-				this.$el.attr('data-cid', this.cid);
+				this.listenTo(this, "itemview:entitylink:click", function(context, entityLinkModel) {
+					Communicator.mediator.trigger("panel:click", {
+						entityLinkModel: entityLinkModel,
+						view: this
+					});
+				});
 			},
 
 			itemView: PanelEntityView,

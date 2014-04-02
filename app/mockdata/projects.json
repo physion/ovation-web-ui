@@ -1,4 +1,5 @@
-[{
+[
+{
     "type" : "Project",
     "access" : "write",
     "attributes" : {
@@ -9,7 +10,6 @@
         "start": "2014-01-29T02:21:24.236-05:00",
         "startZone": "America/New_York"
     },
-    
     "links" : {
         "experiments" : {
             "href" : "/api/v1/entities/bb1fda63-ee8a-46af-b986-958d924bfbcf/experiments",
@@ -28,7 +28,7 @@
             "count" : 1
         },
         "analysis_records" : {
-            "href" : "/api/v1/entities/{attributes._id}/analyses",
+            "href" : "/api/v1/entities/bb1fda63-ee8a-46af-b986-958d924bfbcf/analyses",
             "count" : 0
         }
     }
@@ -37,25 +37,24 @@
     "type" : "Project",
     "access" : "write",
     "attributes" : {
-        "_id": "bb1fda63-ee8a-46af-b986-958d924bfbch",
-        "_rev": "4-2185cd00eaf3c5f002626fc1713dc560",
+        "_id": "bb1fda63-ee8a-46af-b986-958d924bfbce",
+        "_rev": "4-2185cd00eaf3c5f002626fc1713dc563",
         "name": "Keith's project",
-        "purpose": "qPCR experiments and analysis",
+        "purpose": "Test purpose",
         "start": "2014-01-29T02:21:24.236-05:00",
         "startZone": "America/New_York"
     },
-    
     "links" : {
         "experiments" : {
-            "href" : "/api/v1/entities/bb1fda63-ee8a-46af-b986-958d924bfbch/experiments",
+            "href" : "/api/v1/entities/bb1fda63-ee8a-46af-b986-958d924bfbce/experiments",
             "count" : 0
         },
         "projects" : {
-            "href" : "/api/v1/entities/bb1fda63-ee8a-46af-b986-958d924bfbch/projects",
+            "href" : "/api/v1/entities/bb1fda63-ee8a-46af-b986-958d924bfbce/projects",
             "count" : 1
         },
         "attachments" : {
-            "href" : "/api/v1/entities/bb1fda63-ee8a-46af-b986-958d924bfbch/attachments",
+            "href" : "/api/v1/entities/bb1fda63-ee8a-46af-b986-958d924bfbce/attachments",
             "count" : 0
         },
         "owner" : {
@@ -63,8 +62,9 @@
             "count" : 1
         },
         "analysis_records" : {
-            "href" : "/api/v1/entities/{attributes._id}/analyses",
+            "href" : "/api/v1/entities/bb1fda63-ee8a-46af-b986-958d924bfbce/analyses",
             "count" : 0
         }
     }
-}]
+}
+]
