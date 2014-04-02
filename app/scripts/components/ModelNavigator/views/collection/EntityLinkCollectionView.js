@@ -11,7 +11,11 @@ define([
 			tagName: 'ul',
 			className: 'model-navigator-entity-links',
 			
-			initialize: function() {},
+			initialize: function() {
+				this.listenTo(this, "itemview:entitylink:click", function(context, entityLinkModel) {
+					this.trigger("entitylink:click", entityLinkModel);
+				})
+			},
 
 			itemView: EntityLinkView,
 

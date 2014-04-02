@@ -35,6 +35,9 @@ define([
 						});
 						this.$el.append(this.entityLinkCollectionView.$el);
 						this.entityLinkCollectionView.render();
+						this.listenTo(this.entityLinkCollectionView, 'entitylink:click', function(entityLinkModel) {
+							this.trigger('entitylink:click', entityLinkModel);
+						})
 					}
 					this.entityLinkCollectionView.$el.slideToggle();
 					return false;

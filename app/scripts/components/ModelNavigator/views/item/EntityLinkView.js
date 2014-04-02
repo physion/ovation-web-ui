@@ -17,8 +17,8 @@ define([
 
 			/* Ui events hash */
 			events: {
-				'click': function() {
-					Communicator.mediator.trigger("entitylink:click", this.model);
+				'click': function(e) {
+					this.trigger("entitylink:click", this.model);
 					return false;
 				}
 			},

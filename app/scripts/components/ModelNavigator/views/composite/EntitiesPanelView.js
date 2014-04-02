@@ -11,7 +11,7 @@ define([
 		return Backbone.Marionette.CompositeView.extend({
 			className: 'model-navigator-panel',
 			initialize: function() {
-				Communicator.mediator.on("entitylink:click", function(entityLinkModel) {
+				this.listenTo(this, "itemview:entitylink:click", function(context, entityLinkModel) {
 					Communicator.mediator.trigger("panel:click", {
 						entityLinkModel: entityLinkModel,
 						view: this
