@@ -9,7 +9,7 @@
 }
 
 .model-navigator-active-view-region {
-	height: 94%;
+	height: 100%;
 	width: 100%;
 }
 
@@ -29,6 +29,7 @@
 	height: 100%;
 	padding: 6px;
 	width: 150px;
+	overflow-y: scroll;
 }
 
 .model-navigator-panel ul {

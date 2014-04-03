@@ -10,7 +10,13 @@ define([
 			className: 'model-navigator',
 			template: MainLayoutTemplate,
 
-			initialize: function() {},
+			initialize: function() {
+				var self = this,
+					lazyLayout = _.debounce(function() {
+						self.resize();
+					}, 300);
+				$(window).resize(lazyLayout);
+			},
 
 			/* Layout sub regions */
 			regions: {
@@ -24,7 +30,21 @@ define([
 			events: {},
 
 			/* on render callback */
-			onRender: function() {}
+			onRender: function() {},
+
+			onShowCalled: function() {
+				this.resize();
+			},
+
+			resize: function() {
+				// Resize the navigator region to 100% of the available height
+				var totalHeight = this.$el.height(),
+					navRegion = this.$el.find('.model-navigator-active-view-region'),
+					heightDifference = navRegion.position().top - this.$el.position().top;
+				navRegion.height(totalHeight - heightDifference);
+			}
+
+
 		});
 
 	});
