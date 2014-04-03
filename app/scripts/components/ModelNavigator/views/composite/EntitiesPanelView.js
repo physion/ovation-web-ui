@@ -19,6 +19,11 @@ define([
 						view: this
 					});
 				});
+				this.listenTo(this, 'itemview:entity:click', function(context) {
+					context.$el.siblings().find('li').removeClass('active').end().removeClass('active');
+					context.$el.addClass('active');
+					Communicator.mediator.trigger('entity:select', context.model);
+				})
 			},
 
 			itemView: PanelEntityView,

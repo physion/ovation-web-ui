@@ -47,5 +47,30 @@ header input.form-control {
 
 #entity-viewer {
 	float: left;
-	width: 57%;
+	padding-right: 12px;
+	margin-top: 24px;
+}
+
+#entity-view,
+#entity-metadata-viewer {
+	float: left;
+	margin-left: 1%;
+	width: 70%;
+	background-color: #eee;
+	height: 97%;
+	text-align: center;
+	overflow: scroll;
+}
+
+#entity-metadata-viewer {
+	width: 28%
+}
+
+#entity-view .lead,
+#entity-metadata-viewer .lead {
+}
+
+#entity-view-data {
+	white-space: pre;
+	text-align: left;
 }

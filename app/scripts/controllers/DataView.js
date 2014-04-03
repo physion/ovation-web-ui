@@ -1,9 +1,10 @@
 define([
 	'backbone',
 	'views/layout/DataView',
-	'components/ModelNavigator/controllers/ModelNavigator'
+	'components/ModelNavigator/controllers/ModelNavigator',
+	'components/EntityViewer/controllers/EntityViewerController'
 ],
-function( Backbone, DataViewLayout, ModelNavigatorController ) {
+function( Backbone, DataViewLayout, ModelNavigatorController, EntityViewerController ) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -13,11 +14,32 @@ function( Backbone, DataViewLayout, ModelNavigatorController ) {
 				model: options.model
 			});
 			options.region.show(dataViewLayout);
+			this.dataViewLayout = dataViewLayout;
 
 			var modelNavigatorController = new ModelNavigatorController({
 				model: options.model,
 				region: dataViewLayout.modelNavigator
 			});
+
+			var entityViewController = new EntityViewerController({
+			});
+
+			var self = this,
+				lazyLayout = _.debounce(function() {
+					self.resize();
+				}, 300);
+			$(window).resize(function() {
+				self.resize();
+			});
+
+			this.resize();
+
+		},
+
+		resize: function() {
+			var availableWidth = this.dataViewLayout.$el.width();
+			var entityViewerWidth = availableWidth - $('#model-navigator-region').outerWidth();
+			this.dataViewLayout.$el.find('#entity-viewer').outerWidth(entityViewerWidth);
 		}
 	});
 
