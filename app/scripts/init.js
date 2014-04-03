@@ -24,6 +24,9 @@ require.config({
         },
         communicator: {
             deps: ['backbone']
+        },
+        jqueryui: {
+            deps: ['jquery']
         }
     },
 
@@ -55,7 +58,9 @@ require.config({
         /* Includes for mocking services */
         mockjax: '../bower_components/jquery-mockjax/jquery.mockjax',
 
-        communicator: 'communicator'
+        communicator: 'communicator',
+
+        jqueryui: '../bower_components/jquery-ui/ui/jquery-ui.custom'
     },
 
     hbs: {
