@@ -20,7 +20,8 @@ define([
 
 			/* Layout sub regions */
 			regions: {
-				modelNavigator: '#model-navigator-region'
+				modelNavigator: '#model-navigator-region',
+				entityViewer: '#entity-viewer'
 			},
 
 			/* ui selector cache */
@@ -37,10 +38,17 @@ define([
 			},
 
 			resize: function() {
-				// Resize the navigator region to 100% of the available height
+				
+				// Resize the regions to 100% of the available height
 				var navRegion = this.$el.find('#model-navigator-region'),
-					regionTop = navRegion.position().top;
-				navRegion.height($(window).height() -  regionTop);
+					regionTop = navRegion.position().top,
+					availableHeight = $(window).height() -  regionTop,
+					entityViewer = this.$el.find('#entity-viewer'),
+					margin = entityViewer.css('margin-top');
+
+				navRegion.height(availableHeight);
+				margin = margin.replace('px', '');
+				entityViewer.height(availableHeight - margin);
 			}
 		});
 
