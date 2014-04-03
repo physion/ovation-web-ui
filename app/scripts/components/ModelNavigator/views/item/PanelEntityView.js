@@ -1,10 +1,11 @@
 define([
 	'backbone',
+	'communicator',
 	'hbs!../../templates/item/EntityViewTemplate',
 	'../../collections/EntityLinkCollection',
 	'../collection/EntityLinkCollectionView'
 	],
-	function( Backbone, EntityViewTemplate, EntityLinkCollection, EntityLinkCollectionView ) {
+	function( Backbone, Communicator, EntityViewTemplate, EntityLinkCollection, EntityLinkCollectionView ) {
 		'use strict';
 
 		/* Return a ItemView class definition */
@@ -40,6 +41,7 @@ define([
 						})
 					}
 					this.entityLinkCollectionView.$el.slideToggle();
+					this.trigger('entity:click');
 					return false;
 				}
 			},

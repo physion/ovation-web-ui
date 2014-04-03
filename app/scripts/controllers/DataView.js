@@ -1,9 +1,10 @@
 define([
 	'backbone',
 	'views/layout/DataView',
-	'components/ModelNavigator/controllers/ModelNavigator'
+	'components/ModelNavigator/controllers/ModelNavigator',
+	'components/EntityViewer/controllers/EntityViewerController'
 ],
-function( Backbone, DataViewLayout, ModelNavigatorController ) {
+function( Backbone, DataViewLayout, ModelNavigatorController, EntityViewerController ) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -18,6 +19,9 @@ function( Backbone, DataViewLayout, ModelNavigatorController ) {
 			var modelNavigatorController = new ModelNavigatorController({
 				model: options.model,
 				region: dataViewLayout.modelNavigator
+			});
+
+			var entityViewController = new EntityViewerController({
 			});
 
 			var self = this,

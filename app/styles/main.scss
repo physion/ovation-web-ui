@@ -58,8 +58,8 @@ header input.form-control {
 	width: 70%;
 	background-color: #eee;
 	height: 97%;
-	display: table;
 	text-align: center;
+	overflow: scroll;
 }
 
 #entity-metadata-viewer {
@@ -68,6 +68,9 @@ header input.form-control {
 
 #entity-view .lead,
 #entity-metadata-viewer .lead {
-	display: table-cell;
-	vertical-align: middle;
+}
+
+#entity-view-data {
+	white-space: pre;
+	text-align: left;
 }
