@@ -1,7 +1,8 @@
 define([
 	'backbone',
 	'../views/layout/MainLayout',
-	'./PanelsController'
+	'./PanelsController',
+	'jqueryui'
 ],
 function( Backbone, MainLayout, PanelsController ) {
     'use strict';
@@ -18,6 +19,9 @@ function( Backbone, MainLayout, PanelsController ) {
 			panelsController = new PanelsController({
 				region: layout.activeViewRegion
 			});
+
+			//TODO: figure out why this works here
+			region.$el.resizable({ handles: "e" });
 		}
 
 	});

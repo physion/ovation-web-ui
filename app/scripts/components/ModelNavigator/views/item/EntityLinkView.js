@@ -7,7 +7,8 @@ define([
 		'use strict';
 
 		return Backbone.Marionette.ItemView.extend({
-
+			tagName: 'li',
+			
 			initialize: function() {},
 			
 			template: EntityLinkViewTemplate,

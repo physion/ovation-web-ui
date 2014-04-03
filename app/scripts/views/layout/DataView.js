@@ -9,7 +9,11 @@ define([
 		return Backbone.Marionette.Layout.extend({
 
 			initialize: function() {
-				console.log("initialize a Dataview Layout");
+				var self = this,
+					lazyLayout = _.debounce(function() {
+						self.resize();
+					}, 300);
+				$(window).resize(lazyLayout);
 			},
 			
 			template: DataViewTmpl,
@@ -29,7 +33,10 @@ define([
 			onRender: function() {},
 
 			onShowCalled: function() {
-				
+				this.resize();
+			},
+
+			resize: function() {
 				// Resize the navigator region to 100% of the available height
 				var navRegion = this.$el.find('#model-navigator-region'),
 					regionTop = navRegion.position().top;

@@ -19,7 +19,7 @@ define([
 
 			/* Ui events hash */
 			events: {
-				'click a.entity': function() {
+				'click': function() {
 					var i, linksArray, links;
 					if(!this.entityLinkCollection) {
 						this.entityLinkCollection = new EntityLinkCollection();
