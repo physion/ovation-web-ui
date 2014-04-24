@@ -33,6 +33,9 @@ Update gem
 Install compass
 - `sudo gem install compass`
 
+Install coffescript
+- `sudo npm install -g coffee-script`
+
 Go to ui directory and run `grunt` to start the test server
 
 If you get ruby/SASS error you may need to reinstall SASS
