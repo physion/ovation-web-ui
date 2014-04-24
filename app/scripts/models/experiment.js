@@ -4,7 +4,7 @@
 
   Experiment = OvationBaseModel.extend({
     initialize: function() {
-      return this.urlRoot = "" + this.urlRoot + "/source/" + this.id;
+      return this.urlRoot = "" + this.urlRoot + "/experiment/" + this.id;
     }
   });
 
