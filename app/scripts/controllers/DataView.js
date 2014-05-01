@@ -2,9 +2,10 @@ define([
 	'backbone',
 	'views/layout/DataView',
 	'components/ModelNavigator/controllers/ModelNavigator',
-	'components/EntityViewer/controllers/EntityViewerController'
+	'components/EntityViewer/controllers/EntityViewerController',
+	'components/MetadataViewer/controllers/MetadataViewerController'
 ],
-function( Backbone, DataViewLayout, ModelNavigatorController, EntityViewerController ) {
+function( Backbone, DataViewLayout, ModelNavigatorController, EntityViewerController, MetadataViewerController ) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -22,6 +23,10 @@ function( Backbone, DataViewLayout, ModelNavigatorController, EntityViewerContro
 			});
 
 			var entityViewController = new EntityViewerController({
+			});
+
+			var metadataViewerController = new MetadataViewerController({
+				region: dataViewLayout.metadataViewer
 			});
 
 			var self = this,

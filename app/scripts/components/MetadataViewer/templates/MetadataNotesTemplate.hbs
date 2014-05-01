@@ -1,0 +1,13 @@
+<span class="lead">Notes</span>
+<div>
+{{#each notes}}
+  {{@key}}
+  {{# each this}}
+  	<ul>
+  	{{#each this }}
+  		<li><strong>{{@key}}</strong> {{ this }}</li>
+  	{{/each}}
+  	</ul>
+  {{/each}}
+{{/each}}
+</div>
