@@ -10,6 +10,7 @@ function( Backbone, Communicator ) {
 		initialize: function( options ) {
 			var self = this;
 			Communicator.mediator.on('entity:select', function(entityModel) {
+				$('#entity-view-data').siblings('.lead').text(entityModel.get('attributes').name);
 				$('#entity-view-data').text(JSON.stringify(entityModel.toJSON(), undefined, 2));
 			})
 		}
