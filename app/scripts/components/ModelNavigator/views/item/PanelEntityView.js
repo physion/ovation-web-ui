@@ -28,7 +28,7 @@ define([
 			events: {
 				'click': function() {
 					var i, linksArray, links;
-					if(!this.entityLinkCollection) {
+					if(!this.entityLinkCollection && this.model.get('links').data_resource === undefined) {
 						this.entityLinkCollection = new EntityLinkCollection();
 						linksArray = [];
 						links = this.model.get('links');
@@ -45,8 +45,11 @@ define([
 						this.listenTo(this.entityLinkCollectionView, 'entitylink:click', function(entityLinkModel) {
 							this.trigger('entitylink:click', entityLinkModel);
 						})
+						this.entityLinkCollectionView.$el.slideToggle();
 					}
-					this.entityLinkCollectionView.$el.slideToggle();
+					else if(this.entityLinkCollection) {
+						this.entityLinkCollectionView.$el.slideToggle();
+					}
 					this.trigger('entity:click');
 					return false;
 				}
