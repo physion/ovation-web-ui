@@ -1,0 +1,11 @@
+<span class="lead">Properties</span>
+<div>
+{{#each properties}}
+  {{@key}}
+  <ul>
+  {{# each this}}
+  	<li><strong>{{ @key }}</strong> {{ this }}</li>
+  {{/each}}
+  </ul>
+{{/each}}
+</div>

@@ -1,0 +1,11 @@
+<span class="lead">Tags</span>
+<div>
+{{#each tags}}
+  {{@key}}
+  <ul>
+  {{# each this}}
+  	<li>{{ this }}</li>
+  {{/each}}
+  </ul>
+{{/each}}
+</div>

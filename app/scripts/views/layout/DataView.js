@@ -21,7 +21,8 @@ define([
 			/* Layout sub regions */
 			regions: {
 				modelNavigator: '#model-navigator-region',
-				entityViewer: '#entity-viewer'
+				entityViewer: '#entity-viewer',
+				metadataViewer: '#metadata-viewer'
 			},
 
 			/* ui selector cache */

@@ -8,7 +8,25 @@
         "name": "Alice's project",
         "purpose": "qPCR experiments and analysis",
         "start": "2014-01-29T02:21:24.236-05:00",
-        "startZone": "America/New_York"
+        "startZone": "America/New_York",
+        "tags" : {
+            "kvedananda" : ["qPCR", "Agilent"]
+        },
+        "properties" : {
+            "kvedananda" : {
+                "projectOwner" : "Alice",
+                "investigator" : "Keith"
+            }
+        },
+        "notes" : {
+            "kvedananda" : [
+                {
+                    "timestamp" : "...",
+                    "text" : "Note text",
+                    "findings" : "Hey all found some really interesting results today..."
+                }
+            ]
+        }
     },
     "links" : {
         "experiments" : {

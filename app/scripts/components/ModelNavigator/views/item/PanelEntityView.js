@@ -3,16 +3,22 @@ define([
 	'communicator',
 	'hbs!../../templates/item/EntityViewTemplate',
 	'../../collections/EntityLinkCollection',
-	'../collection/EntityLinkCollectionView'
+	'../collection/EntityLinkCollectionView',
+	'hbs!../../templates/item/ProjectEntityViewTemplate',
+	'hbs!../../templates/item/SourceEntityViewTemplate',
+	'hbs!../../templates/item/ProtocolEntityViewTemplate',
+	'hbs!../../templates/item/ExperimentEntityViewTemplate',
+	'hbs!../../templates/item/EpochEntityViewTemplate',
+	'hbs!../../templates/item/MeasurementEntityViewTemplate'
 	],
-	function( Backbone, Communicator, EntityViewTemplate, EntityLinkCollection, EntityLinkCollectionView ) {
+	function( Backbone, Communicator, EntityViewTemplate, EntityLinkCollection, EntityLinkCollectionView, ProjectEntityViewTemplate, SourceEntityViewTemplate, ProtocolEntityViewTemplate, ExperimentEntityViewTemplate, EpochEntityViewTemplate, MeasurementEntityViewTemplate ) {
 		'use strict';
 
 		/* Return a ItemView class definition */
 		return Backbone.Marionette.ItemView.extend({
 			tagName: 'li',
 			initialize: function() {},
-			
+
 			template: EntityViewTemplate,
 
 			/* ui selector cache */
@@ -22,7 +28,7 @@ define([
 			events: {
 				'click': function() {
 					var i, linksArray, links;
-					if(!this.entityLinkCollection) {
+					if(!this.entityLinkCollection && this.model.get('links').data_resource === undefined) {
 						this.entityLinkCollection = new EntityLinkCollection();
 						linksArray = [];
 						links = this.model.get('links');
@@ -39,15 +45,43 @@ define([
 						this.listenTo(this.entityLinkCollectionView, 'entitylink:click', function(entityLinkModel) {
 							this.trigger('entitylink:click', entityLinkModel);
 						})
+						this.entityLinkCollectionView.$el.slideToggle();
 					}
-					this.entityLinkCollectionView.$el.slideToggle();
+					else if(this.entityLinkCollection) {
+						this.entityLinkCollectionView.$el.slideToggle();
+					}
 					this.trigger('entity:click');
 					return false;
 				}
 			},
 
 			/* on render callback */
-			onRender: function() {}
+			onRender: function() {
+				var container = this.$el.find('.entity-attributes-container:first'), entityTemplate;
+				switch(this.model.get('type')) {
+					case 'Project':
+						entityTemplate = ProjectEntityViewTemplate;
+						break;
+					case 'Source':
+						entityTemplate = SourceEntityViewTemplate;
+						break;
+					case 'Protocol':
+						entityTemplate = ProtocolEntityViewTemplate;
+						break;
+					case 'Experiment':
+						entityTemplate = ExperimentEntityViewTemplate;
+						break;
+					case 'Epoch':
+						entityTemplate = EpochEntityViewTemplate;
+						break;
+					case 'Measurement':
+						entityTemplate = MeasurementEntityViewTemplate;
+						break;
+				}
+				if(entityTemplate) {
+					container.html(entityTemplate(this.model.toJSON()));
+				}	
+			}
 		});
 
 	});
