@@ -105,3 +105,12 @@
 	margin-bottom: 4px;
 	overflow: hidden;
 }
+
+.plupload-browse-button,
+.plupload-drop-element {
+	display: none;
+}
+
+.file-drop-highlight {
+	background-color: #F8F8F8;
+}

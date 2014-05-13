@@ -17,7 +17,8 @@
     "sinon": "~1.7.3",
     "bootstrap-sass": "~3.0.2",
     "jquery-mockjax": "1.5.3",
-    "jquery-ui": "~1.10.4"
+    "jquery-ui": "~1.10.4",
+    "plupload": "2.1.1"
   },
   "devDependencies": {},
   "directory": "bower_components"

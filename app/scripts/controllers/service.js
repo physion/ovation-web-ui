@@ -10,7 +10,12 @@ function( Backbone ) {
 		initialize: function( options ) {
 			$.mockjax({
 				url: '/api/v1/projects',
-				proxy: 'mockdata/projects.json'
+				response: function() {
+					if(localStorage['projects'])
+						this.responseText = localStorage['projects'];
+					else
+						this.responseText = '[]';
+				}
 			});
 			$.mockjax({
 				url: '/api/v1/sources',
@@ -22,7 +27,12 @@ function( Backbone ) {
 			});
 			$.mockjax({
 				url: /^\/api\/v1\/entities\/.*experiments/,
-				proxy: 'mockdata/experiments.json'
+				response: function() {
+					if(localStorage['experiments'])
+						this.responseText = localStorage['experiments'];
+					else
+						this.responseText = '[]';
+				}				
 			});
 			$.mockjax({
 				url: /^\/api\/v1\/entities\/.*projects/,
@@ -34,7 +44,21 @@ function( Backbone ) {
 			});
 			$.mockjax({
 				url: /^\/api\/v1\/entities\/.*epochs/,
-				proxy: 'mockdata/epochs.json'
+				response: function() {
+					if(localStorage['epochs'])
+						this.responseText = localStorage['epochs'];
+					else
+						this.responseText = '[]';
+				}	
+			});
+			$.mockjax({
+				url: /^\/api\/v1\/entities\/.*epoch_groups/,
+				response: function() {
+					if(localStorage['epochGroups'])
+						this.responseText = localStorage['epochGroups'];
+					else
+						this.responseText = '[]';
+				}				
 			});
 			$.mockjax({
 				url: /^\/api\/v1\/entities\/.*measurements/,

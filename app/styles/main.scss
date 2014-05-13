@@ -85,3 +85,21 @@ header input.form-control {
 	white-space: pre;
 	text-align: left;
 }
+
+#plupload-browse-button,
+#plupload-drop-element {
+	display: none;
+}
+
+#welcome-guide-main {
+	width: 60%;
+	margin: auto;
+}
+
+#welcome-guide-entities-form {
+	margin-top: 40px;
+}
+
+#welcome-guide-entities-form .form-group {
+	margin-bottom: 30px;
+}

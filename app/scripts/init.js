@@ -27,6 +27,9 @@ require.config({
         },
         jqueryui: {
             deps: ['jquery']
+        },
+        plupload: {
+            deps: ['moxie']
         }
     },
 
@@ -60,7 +63,10 @@ require.config({
 
         communicator: 'communicator',
 
-        jqueryui: '../bower_components/jquery-ui/ui/jquery-ui.custom'
+        jqueryui: '../bower_components/jquery-ui/ui/jquery-ui.custom',
+
+        plupload: '../bower_components/plupload/js/plupload.dev',
+        moxie: '../bower_components/plupload/js/moxie'
     },
 
     hbs: {
