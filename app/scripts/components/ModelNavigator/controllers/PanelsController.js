@@ -58,9 +58,9 @@ define([
 
 							// Create a new collection for the returned entities
 							var entitiesCollection = new EntitiesCollection(),
-
 								// Initialize a panel view to display the entities
 								newPanel = new EntitiesPanelView({
+									model: eData.entityModel,
 									collection: entitiesCollection
 								}),
 								newContainerWidth;

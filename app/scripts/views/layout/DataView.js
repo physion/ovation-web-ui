@@ -1,8 +1,10 @@
 define([
 	'backbone',
-	'hbs!tmpl/layout/DataView'
+	'communicator',
+	'hbs!tmpl/layout/DataView',
+	'plupload'
 	],
-	function( Backbone, DataViewTmpl  ) {
+	function( Backbone, Communicator, DataViewTmpl  ) {
 		'use strict';
 
 		/* Return a Layout class definition */
@@ -29,7 +31,12 @@ define([
 			ui: {},
 
 			/* Ui events hash */
-			events: {},
+			events: {
+				'click #plupload-start': function() {
+					Communicator.mediator.trigger("uploadFiles");
+					return false;
+				}
+			},
 
 			/* on render callback */
 			onRender: function() {},
