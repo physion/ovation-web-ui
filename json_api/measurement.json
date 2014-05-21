@@ -1,9 +1,9 @@
 {
     "type" : "Measurement",
     "access" : "read|write",
+    "_id" : "dd3e7e9a-5bd9-4045-aca5-ff6d280ede4d",
+    "_rev": "1-2527da57957c70d4285f9a1333e61fb4",
     "attributes" : {
-        "_id" : "dd3e7e9a-5bd9-4045-aca5-ff6d280ede4d",
-        "_rev": "1-2527da57957c70d4285f9a1333e61fb4",
         "name": "A7_HYU85_corrected",
         "devices" : ["QuantStudio"],
     },

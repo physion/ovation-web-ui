@@ -7,10 +7,7 @@
         "username": "Alice Demo",
         "email": "alice_demo@physion.us",
     },
-    "links" : {
-        "attachments" : {
-            "href" : "/api/v1/entities/{attributes._id}/attachments",
-            "count" : 0
-        }
+    "named_links" : {
+        "attachments" : {}
     }
 }

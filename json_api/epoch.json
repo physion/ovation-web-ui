@@ -1,9 +1,9 @@
 {
     "type" : "{ENTITY_NAME}",
     "access" : "read|write",
+    "_id": "6f7cca39-3158-4998-bae6-3edd074b77dc",
+    "_rev": "1-12306b14b5a0f99a18cb2100c2dce6d8",
     "attributes" : {
-        "_id": "6f7cca39-3158-4998-bae6-3edd074b77dc",
-        "_rev": "1-12306b14b5a0f99a18cb2100c2dce6d8",
         "start": "2012-08-28T16:46:29.000Z",
         "end": "2012-08-28T18:58:43.000Z",
         "startZone": "UTC",
@@ -32,10 +32,6 @@
         "projects" : {
             "href" : "/api/v1/entities/{attributes._id}/projects",
             "count" : 1
-        },
-        "attachments" : {
-            "href" : "/api/v1/entities/{attributes._id}/attachments",
-            "count" : 0
         },
         "protocol" : {
             "href" : "/api/v1/entities/14c1dd90-69b3-0131-a68a-12313d009d02/protocol",

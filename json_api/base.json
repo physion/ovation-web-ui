@@ -1,9 +1,10 @@
 {
+    "_id" : "{UUID}",
+    "_rev" : "{HASH}",
     "type" : "{ENTITY_NAME}",
     "access" : "read|write",
-    "attributes" : {
-        "_id" : "{UUID}",
-        "_rev" : "{HASH}",
+    "attributes" : {},
+    "annotations" : {
         "tags" : {
             "{USER1_ID}" : ["foo", "bar"],
             "{USER2_ID}" : ["baz"]
@@ -47,13 +48,17 @@
             "href" : "/api/v1/entities/{attributes._id}/projects",
             "count" : 1
         },
-        "attachments" : {
-            "href" : "/api/v1/entities/{attributes._id}/attachments",
-            "count" : 0
-        },
         "analysis_records" : {
             "href" : "/api/v1/entities/{attributes._id}/analyses",
             "count" : 0
         }
+    },
+    "named_links" : {
+        "attachments" : {
+            "{NAME}" : {
+                "href" : "/api/v1/entities/{attributes._id}/attachments",
+                "count" : 0
+            }
+        },
     }
 }

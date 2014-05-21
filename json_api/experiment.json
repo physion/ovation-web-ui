@@ -27,9 +27,9 @@
 {
     "type" : "Experiment",
     "access" : "write",
+    "_id": "a53a6be0-6823-4f0f-aa4f-44171dfaa7c4",
+    "_rev": "2-52190b6c478c0d99fc69f3260e85968c",
     "attributes" : {
-        "_id": "a53a6be0-6823-4f0f-aa4f-44171dfaa7c4",
-        "_rev": "2-52190b6c478c0d99fc69f3260e85968c",
         "start": "2012-08-28T16:46:29.000Z",
         "startZone": "UTC",
         "protocolParameters": {},
@@ -49,10 +49,6 @@
         "projects" : {
             "href" : "/api/v1/entities/a53a6be0-6823-4f0f-aa4f-44171dfaa7c4/projects",
             "count" : 1
-        },
-        "attachments" : {
-            "href" : "/api/v1/entities/a53a6be0-6823-4f0f-aa4f-44171dfaa7c4/attachments",
-            "count" : 0
         },
         "protocol" : {
             "href" : "/api/v1/entities/14c1dd90-69b3-0131-a68a-12313d009d02/protocol",
