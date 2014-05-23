@@ -103,3 +103,25 @@ header input.form-control {
 #welcome-guide-entities-form .form-group {
 	margin-bottom: 30px;
 }
+
+.login-view {
+	width: 40%;
+	margin: auto;
+}
+
+.login-form-wrapper {
+	margin-top: 40px;
+}
+
+.login-form .error {
+	font-size: 12px;
+	margin-top: 4px;
+	color: red;
+}
+
+.login-form .alert {
+	display: none;
+	margin-top: 10px;
+	padding: 8px;
+	font-size: 12px;
+}

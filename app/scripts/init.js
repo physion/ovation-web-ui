@@ -30,6 +30,12 @@ require.config({
         },
         plupload: {
             deps: ['moxie']
+        },
+        jqueryCookie: {
+            deps: ['jquery']
+        },
+        jqueryValidate: {
+            deps: ['jquery']
         }
     },
 
@@ -66,7 +72,11 @@ require.config({
         jqueryui: '../bower_components/jquery-ui/ui/jquery-ui.custom',
 
         plupload: '../bower_components/plupload/js/plupload.dev',
-        moxie: '../bower_components/plupload/js/moxie'
+        moxie: '../bower_components/plupload/js/moxie',
+
+        jqueryCookie: '../bower_components/jquery-cookie/jquery.cookie',
+
+        jqueryValidate: '../bower_components/jquery-validation/dist/jquery.validate'
     },
 
     hbs: {
