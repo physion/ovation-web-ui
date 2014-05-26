@@ -49,6 +49,8 @@ require.config({
         'backbone.wreqr': '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr',
         'backbone.babysitter': '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
 
+        'backbone-associations': '../bower_components/backbone-associations/backbone-associations',
+
         /* alias the bootstrap js lib */
         bootstrap: '../bower_components/bootstrap-sass/dist/js/bootstrap',
 
