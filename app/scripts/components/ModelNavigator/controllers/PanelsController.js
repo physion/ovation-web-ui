@@ -4,9 +4,10 @@ define([
 	'../views/DefaultPanelView',
 	'../collections/EntitiesCollection',
 	'../views/composite/EntitiesPanelView',
-	'communicator'
+	'communicator',
+	'ovationService'
 	],
-	function( Backbone, PanelsView, DefaultPanelView, EntitiesCollection, EntitiesPanelView, Communicator ) {
+	function( Backbone, PanelsView, DefaultPanelView, EntitiesCollection, EntitiesPanelView, Communicator, OvationService ) {
 		'use strict';
 
 		return Backbone.Marionette.Controller.extend({
@@ -15,19 +16,37 @@ define([
 
 				// Region provided by parent
 				var region = options.region,
-					panelsView = new PanelsView(),
-
-					// Babysitter to manage panels
-					viewBabysitter = new Backbone.ChildViewContainer(),
+					panelsView = this.panelsView = new PanelsView(),
 
 					// Initialize the default panel to provide starting links for projects, sources, protocols
 					defaultView = new DefaultPanelView();
 
 				// Show the default panel
 				region.show(panelsView);
-				viewBabysitter.add(defaultView);
-				panelsView.viewContainerEl.append(defaultView.$el);
+				panelsView.addPanel(defaultView);
 				
+				this.listenTo(defaultView, 'show', function(type) {
+					var self = this;
+					this.panelsView.clearPanels(defaultView);
+					switch(type) {
+						case 'projects':
+							OvationService.getUserProjects().done(function(data) {
+								self.addPanel(data);
+							});
+							break;
+						case 'sources':
+							OvationService.getUserSources().done(function(data) {
+								self.addPanel(data);
+							});
+							break;
+						case 'protocols':
+							OvationService.getUserProtocols().done(function(data) {
+								self.addPanel(data);
+							});
+							break;
+					}
+				});
+
 				// Handler for entity link click
 				Communicator.mediator.on('panel:click', function(eData) {
 
@@ -36,7 +55,7 @@ define([
 						viewsToRemove = [],
 						i;
 
-					viewBabysitter.each(function(view, i) {
+					this.viewSitter.each(function(view, i) {
 						if(clickedPanelFound) {
 							viewsToRemove.push(view);
 						}
@@ -45,7 +64,7 @@ define([
 						}
 					});
 					for(i = 0; i < viewsToRemove.length; i++) {
-						viewBabysitter.remove(viewsToRemove[i]);
+						this.viewSitter.remove(viewsToRemove[i]);
 						viewsToRemove[i].remove();
 					}
 
@@ -68,14 +87,27 @@ define([
 							// Show panel
 							newPanel.render();
 							entitiesCollection.reset(data);
-							viewBabysitter.add(newPanel);
+							this.viewSitter.add(newPanel);
 							panelsView.viewContainerEl.append(newPanel.$el);
-							newContainerWidth = newPanel.$el.outerWidth() * viewBabysitter.length;
+							newContainerWidth = newPanel.$el.outerWidth() * this.viewSitter.length;
 							panelsView.viewContainerEl.width(newContainerWidth);
 						}
 					});
 				});
 
+			},
+
+			addPanel: function(arrayOfEntities, model) {
+				var entitiesCollection = new EntitiesCollection(),
+					newPanel = new EntitiesPanelView({
+						model: model,
+						collection: entitiesCollection
+					});
+				
+				newPanel.render();
+				entitiesCollection.reset(arrayOfEntities);
+				this.panelsView.addPanel(newPanel);
 			}
+
 		});
 	});
