@@ -78,7 +78,9 @@ require.config({
 
         jqueryCookie: '../bower_components/jquery-cookie/jquery.cookie',
 
-        jqueryValidate: '../bower_components/jquery-validation/dist/jquery.validate'
+        jqueryValidate: '../bower_components/jquery-validation/dist/jquery.validate',
+
+        ovationService: 'controllers/OvationServiceController'
     },
 
     hbs: {
