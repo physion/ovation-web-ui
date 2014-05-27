@@ -17,18 +17,16 @@ define([
 			},
 
 			'events': {
-				'click li': function(e) {
-					var entityLinkModel = new EntityLinkModel(),
-						$li = $(e.currentTarget);
-					entityLinkModel.set('href', $li.attr('data-href'));
-					$li.siblings().removeClass('active');
-					$li.addClass('active');
-					Communicator.mediator.trigger('panel:click', {
-						entityLinkModel: entityLinkModel,
-						view: this
-					});
-					return false;
+				'click .default-panel-projects': function() {
+					this.trigger('show', 'projects')
+				},
+				'click .default-panel-sources': function() {
+					this.trigger('show', 'sources')
+				},
+				'click .default-panel-protocols': function() {
+					this.trigger('show', 'protocols')
 				}
 			}
+
 		});
 	});
