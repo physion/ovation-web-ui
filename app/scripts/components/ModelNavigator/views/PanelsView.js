@@ -18,6 +18,7 @@ define([
 			addPanel: function(panel) {
 				this.viewSitter.add(panel);
 				this.viewContainerEl.append(panel.$el);
+				panel.render();
 				this.resize();
 			},
 
