@@ -1,8 +1,10 @@
 define([
 		'backbone',
-		'ovationApi'
+		'ovationApi',
+		'models/EntityModel',
+		'collections/EntityCollection'
 	],
-	function( Backbone, OvationAPI ) {
+	function( Backbone, OvationAPI, EntityModel, EntityCollection) {
 
 		var OvationServiceController = Backbone.Marionette.Controller.extend({
 
@@ -41,11 +43,17 @@ define([
 
 			getPromiseForMethod: function(method) {
 				var deferred = $.Deferred(),
-					req = method();
+					req = method(),
+					self = this;
 				req.done(function(data) {
-					deferred.resolve(data);
+					deferred.resolve(self.convertToBackbone(data));
 				});
 				return deferred.promise();
+			},
+
+			convertToBackbone: function(data) {
+				var collection = new EntityCollection( data, {parse: true} );
+				return collection;
 			}
 
 		});

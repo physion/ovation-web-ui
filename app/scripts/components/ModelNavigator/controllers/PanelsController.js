@@ -97,15 +97,11 @@ define([
 
 			},
 
-			addPanel: function(arrayOfEntities, model) {
-				var entitiesCollection = new EntitiesCollection(),
-					newPanel = new EntitiesPanelView({
-						model: model,
-						collection: entitiesCollection
-					});
-				
-				newPanel.render();
-				entitiesCollection.reset(arrayOfEntities);
+			addPanel: function(entitiesCollection, model) {
+				var newPanel = new EntitiesPanelView({
+					model: model,
+					collection: entitiesCollection
+				});
 				this.panelsView.addPanel(newPanel);
 			}
 
