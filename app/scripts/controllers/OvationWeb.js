@@ -2,37 +2,39 @@ define([
 	'backbone',
 	'views/layout/OvationWeb',
 	'views/LoginView',
-	'models/AuthenticatedUserModel',
 	'controllers/DataView',
+	'ovationService'
 ],
-function( Backbone, OvationWebLayout, LoginView, AuthenticatedUserModel, DataViewController ) {
+function( Backbone, OvationWebLayout, LoginView, DataViewController, OvationService ) {
 	'use strict';
 
 	return Backbone.Marionette.Controller.extend({
 
 		initialize: function() {
 
+			var self = this;
+
 			this.layout = new OvationWebLayout({
 				el: '#app-layout'
 			}).render();
 
-			this.listenToOnce(AuthenticatedUserModel, 'authenticated-user:login-needed', function() {
-				if(!this.dataViewController) {
-					this.layout.mainContent.show(new LoginView());
+			this.listenToOnce( OvationService, 'login-needed', function() {
+				if(!self.dataViewController) {
+					self.layout.mainContent.show(new LoginView());
 				}
-			});
+			})
 
-			this.listenToOnce(AuthenticatedUserModel, 'authenticated-user:authenticated', function() {
-				this.dataViewController = new DataViewController({
-					region: this.layout.mainContent
+			this.listenToOnce( OvationService, 'authenticated' , function() {
+				self.dataViewController = new DataViewController({
+					region: self.layout.mainContent
 				});
-				this.stopListening(AuthenticatedUserModel, 'authenticated-user:login-needed');
-				this.listenTo(AuthenticatedUserModel, 'authenticated-user:login-needed', function() {
+				self.stopListening( OvationService, 'login-needed');
+				self.listenTo( OvationService, 'login-needed', function() {
 					//TODO: add a login modal
 				});
 			});
 
-			AuthenticatedUserModel.authenticate();
+			OvationService.authenticate();
 
 		}
 

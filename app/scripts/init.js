@@ -80,7 +80,9 @@ require.config({
 
         jqueryValidate: '../bower_components/jquery-validation/dist/jquery.validate',
 
-        ovationService: 'controllers/OvationServiceController'
+        ovationService: 'controllers/OvationServiceController',
+
+        ovationApi: 'components/OvationAPI/ovationapi'
     },
 
     hbs: {

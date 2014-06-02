@@ -1,10 +1,10 @@
 define([
 	'backbone',
 	'hbs!tmpl/LoginViewTemplate',
-	'models/AuthenticatedUserModel',
+	'ovationService',
 	'jqueryValidate'
 	],
-	function( Backbone, LoginViewTemplate, AuthenticatedUserModel ){
+	function( Backbone, LoginViewTemplate, OvationService ){
 		'use strict';
 
 		return Backbone.View.extend({
@@ -26,7 +26,7 @@ define([
 								tmpObj[value.name] = value.value;
 								return tmpObj;
 							}, {}),
-							request = AuthenticatedUserModel.authenticate(form['login-form-email'], form['login-form-password']);
+							request = OvationService.login(form['login-form-email'], form['login-form-password']);
 						request.error(function(response) {
 							if(response.status === 401) {
 								self.$el.find('.alert').show();
