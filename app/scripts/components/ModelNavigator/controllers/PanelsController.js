@@ -19,7 +19,8 @@ define([
 					panelsView = this.panelsView = new PanelsView(),
 
 					// Initialize the default panel to provide starting links for projects, sources, protocols
-					defaultView = new DefaultPanelView();
+					defaultView = new DefaultPanelView(),
+					self = this;
 
 				// Show the default panel
 				region.show(panelsView);
@@ -50,23 +51,7 @@ define([
 				// Handler for entity link click
 				Communicator.mediator.on('panel:click', function(eData) {
 
-					// When the user clicks a link we want to clear any existing panels after it
-					var clickedPanelFound = false,
-						viewsToRemove = [],
-						i;
-
-					this.viewSitter.each(function(view, i) {
-						if(clickedPanelFound) {
-							viewsToRemove.push(view);
-						}
-						else if(view.cid === eData.view.cid) {
-							clickedPanelFound = true;
-						}
-					});
-					for(i = 0; i < viewsToRemove.length; i++) {
-						this.viewSitter.remove(viewsToRemove[i]);
-						viewsToRemove[i].remove();
-					}
+					self.panelsView.clearPanels(eData.view);
 
 					// Get the data for the next panel
 					$.ajax({
