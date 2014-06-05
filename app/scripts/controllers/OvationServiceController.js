@@ -29,6 +29,16 @@ define([
 				return OvationAPI.login(email, password);
 			},
 
+			getEntitiesWithUri: function(uri) {
+				var deferred = $.Deferred(),
+					req = OvationAPI.Entity.getEntitiesWithUri(uri),
+					self = this;
+				req.done(function(data) {
+					deferred.resolve(self.convertToBackbone(data));
+				});
+				return deferred.promise();
+			},
+
 			getUserProjects: function() {
 				return this.getPromiseForMethod(OvationAPI.Project.getUserProjects);
 			},

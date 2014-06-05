@@ -69,6 +69,14 @@
 	color: #000;
 }
 
+.entity-name-container .entity-name {
+	width: 90%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: block;
+}
+
 .model-navigator-panel .glyphicon-chevron-right,
 .model-navigator-panel .glyphicon-chevron-down {
 	display: block;

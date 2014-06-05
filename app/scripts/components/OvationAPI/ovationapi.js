@@ -89,6 +89,26 @@
 		$(this).on(eventName, callback);
 	}
 
+	OvationAPI.Entity = {
+		getEntitiesWithUri: function(uri) {
+			var deferred = $.Deferred();
+			return $.ajax({
+				url: 'http://localhost:3000' + uri,
+				type: 'GET',
+				dataType: 'json',
+				data: {
+					'api-key': OvationAPI.userData['api_key']
+				},
+				success: function(data) {
+					$.each(data, function(i, value) {
+						OvationAPI.convertToUI(value);
+					});
+					deferred.resolve(data);
+				}
+			})
+		}
+	}
+
 	OvationAPI.Project = {
 		getUserProjects: function() {
 			var deferred = $.Deferred();
@@ -174,11 +194,11 @@
 				if (doc.attributes.purpose != null) {
 					ui_hints.display_name = doc.attributes.purpose;
 				}
-				if (doc.links.epoch_groups != null) {
-					ui_hints.primary_link = doc.links.epoch_groups;
-				}
 				if (doc.links.epoch != null) {
-					ui_hints.secondary_link = doc.links.epoch;
+					ui_hints.primary_link = doc.links.epoch;
+				}
+				if (doc.links.epoch_groups != null) {
+					ui_hints.secondary_link = doc.links.epoch_groups;
 				}
 				break;
 			case "EpochGroup":

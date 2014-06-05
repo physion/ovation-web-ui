@@ -1,10 +1,7 @@
 define([
 	'backbone',
 	'communicator',
-	'../item/EntityLinkView',
 	'hbs!../../templates/item/EntityViewTemplate',
-	'../../collections/EntityLinkCollection',
-	'../collection/EntityLinkCollectionView',
 	'hbs!../../templates/item/ProjectEntityViewTemplate',
 	'hbs!../../templates/item/SourceEntityViewTemplate',
 	'hbs!../../templates/item/ProtocolEntityViewTemplate',
@@ -13,7 +10,7 @@ define([
 	'hbs!../../templates/item/MeasurementEntityViewTemplate',
 	'plupload'
 	],
-	function( Backbone, Communicator, EntityLinkView, EntityViewTemplate, EntityLinkCollection, EntityLinkCollectionView, ProjectEntityViewTemplate, SourceEntityViewTemplate, ProtocolEntityViewTemplate, ExperimentEntityViewTemplate, EpochEntityViewTemplate, MeasurementEntityViewTemplate ) {
+	function( Backbone, Communicator, EntityViewTemplate, ProjectEntityViewTemplate, SourceEntityViewTemplate, ProtocolEntityViewTemplate, ExperimentEntityViewTemplate, EpochEntityViewTemplate, MeasurementEntityViewTemplate ) {
 		'use strict';
 
 		/* Return a ItemView class definition */
@@ -44,7 +41,9 @@ define([
 
 			/* on render callback */
 			onRender: function() {
+				this.$el.html(this.template(this.model.get('ui_hints').toJSON()))
 				var container = this.$el.find('.entity-attributes-container:first'), entityTemplate;
+				var attrJSON = this.model.get('attributes').toJSON();
 				switch(this.model.get('type')) {
 					case 'Project':
 						entityTemplate = ProjectEntityViewTemplate;
@@ -57,6 +56,8 @@ define([
 						break;
 					case 'Experiment':
 						entityTemplate = ExperimentEntityViewTemplate;
+						var start = new Date(attrJSON.start);
+						attrJSON.start = start.getFullYear() + '-' + (start.getMonth() + 1) + '-' + start.getDate();
 						break;
 					case 'Epoch':
 						entityTemplate = EpochEntityViewTemplate;
@@ -66,8 +67,8 @@ define([
 						break;
 				}
 				if(entityTemplate) {
-					container.html(entityTemplate(this.model.get('attributes').toJSON()));
-				}	
+					container.html(entityTemplate(attrJSON));
+				}
 			},
 
 			onShow: function() {

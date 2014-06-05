@@ -2,12 +2,11 @@ define([
 	'backbone',
 	'../views/PanelsView',
 	'../views/DefaultPanelView',
-	'../collections/EntitiesCollection',
 	'../views/composite/EntitiesPanelView',
 	'communicator',
 	'ovationService'
 	],
-	function( Backbone, PanelsView, DefaultPanelView, EntitiesCollection, EntitiesPanelView, Communicator, OvationService ) {
+	function( Backbone, PanelsView, DefaultPanelView, EntitiesPanelView, Communicator, OvationService ) {
 		'use strict';
 
 		return Backbone.Marionette.Controller.extend({
@@ -53,31 +52,16 @@ define([
 
 					self.panelsView.clearPanels(eData.view);
 
-					// Get the data for the next panel
-					$.ajax({
-						url: eData.entityLinkModel.get('href'),
-						type: 'GET',
-						dataType: 'json',
-						success: function(data) {
+					var req = OvationService.getEntitiesWithUri(eData.entityLinkModel.get('href'));
 
-							// Create a new collection for the returned entities
-							var entitiesCollection = new EntitiesCollection(),
-								// Initialize a panel view to display the entities
-								newPanel = new EntitiesPanelView({
-									model: eData.entityModel,
-									collection: entitiesCollection
-								}),
-								newContainerWidth;
-
-							// Show panel
-							newPanel.render();
-							entitiesCollection.reset(data);
-							this.viewSitter.add(newPanel);
-							panelsView.viewContainerEl.append(newPanel.$el);
-							newContainerWidth = newPanel.$el.outerWidth() * this.viewSitter.length;
-							panelsView.viewContainerEl.width(newContainerWidth);
-						}
+					req.done(function(data) {
+						var newPanel = new EntitiesPanelView({
+							model: eData.entityModel,
+							collection: data
+						});
+						self.panelsView.addPanel(newPanel);
 					});
+
 				});
 
 			},
