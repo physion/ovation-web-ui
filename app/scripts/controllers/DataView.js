@@ -26,7 +26,9 @@ function( Backbone, DataViewLayout, ModelNavigatorController, EntityViewerContro
 				region: dataViewLayout.modelNavigator
 			});
 
-			entityViewController = new EntityViewerController({});
+			entityViewController = new EntityViewerController({
+				region: dataViewLayout.entityViewer
+			});
 
 			metadataViewerController = new MetadataViewerController({
 				region: dataViewLayout.metadataViewer
@@ -44,7 +46,9 @@ function( Backbone, DataViewLayout, ModelNavigatorController, EntityViewerContro
 
 		resize: function() {
 			var availableWidth = this.dataViewLayout.$el.width(),
-				entityViewerWidth = availableWidth - $('#model-navigator-region').outerWidth();
+				metadataViewerWidth = $('#metadata-viewer').outerWidth(),
+				modelNavigatorWidth = $('#model-navigator-region').outerWidth(),
+				entityViewerWidth = availableWidth - metadataViewerWidth - modelNavigatorWidth;
 			this.dataViewLayout.$el.find('#entity-viewer').outerWidth(entityViewerWidth);
 		}
 	});

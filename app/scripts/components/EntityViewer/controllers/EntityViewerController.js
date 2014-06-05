@@ -1,17 +1,27 @@
 define([
 	'backbone',
-	'communicator'
+	'communicator',
+	'../views/layout/MainLayout',
+	'../views/item/ProjectView'
 ],
-function( Backbone, Communicator ) {
+function( Backbone, Communicator, MainLayout, ProjectView ) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
 
 		initialize: function( options ) {
-			var self = this;
+			var self = this,
+				layout = new MainLayout(),
+				region = options.region;
+			region.show(layout);
+
 			Communicator.mediator.on('entity:select', function(entityModel) {
-				$('#entity-view-data').siblings('.lead').text(entityModel.get('attributes').name);
-				$('#entity-view-data').text(JSON.stringify(entityModel.toJSON(), undefined, 2));
+				if(entityModel.get('type') == 'Project') {
+					var projectView = new ProjectView({
+						model: entityModel
+					});
+					layout.main.show(projectView);
+				}
 			})
 		}
 

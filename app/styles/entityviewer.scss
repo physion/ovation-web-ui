@@ -1,0 +1,34 @@
+.entity-viewer-main-region {
+	padding: 0 20px;
+}
+
+.entity-viewer-project-view textarea {
+	width: 50%;
+}
+
+.entity-viewer-project-view .project-start {
+	width: 30%;
+	float: left;
+	margin-right: 10px;
+}
+
+.entity-viewer-project-view .project-timezone {
+	width: 30%;
+}
+
+.project-upload-measurements,
+.project-upload-analysis {
+	border: 2px dashed #EEEEEE;
+	float: left;
+	height: 100px;
+	margin-right: 10px;
+	margin-top: 20px;
+	width: 48%;
+	text-align: center;
+	color: #999;
+	padding-top: 36px;
+}
+
+.project-view-add-experiment-wrapper {
+	margin-top: 16px;
+}
