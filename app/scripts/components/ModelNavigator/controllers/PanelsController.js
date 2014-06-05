@@ -2,12 +2,11 @@ define([
 	'backbone',
 	'../views/PanelsView',
 	'../views/DefaultPanelView',
-	'../collections/EntitiesCollection',
 	'../views/composite/EntitiesPanelView',
 	'communicator',
 	'ovationService'
 	],
-	function( Backbone, PanelsView, DefaultPanelView, EntitiesCollection, EntitiesPanelView, Communicator, OvationService ) {
+	function( Backbone, PanelsView, DefaultPanelView, EntitiesPanelView, Communicator, OvationService ) {
 		'use strict';
 
 		return Backbone.Marionette.Controller.extend({
@@ -19,7 +18,8 @@ define([
 					panelsView = this.panelsView = new PanelsView(),
 
 					// Initialize the default panel to provide starting links for projects, sources, protocols
-					defaultView = new DefaultPanelView();
+					defaultView = new DefaultPanelView(),
+					self = this;
 
 				// Show the default panel
 				region.show(panelsView);
@@ -50,49 +50,18 @@ define([
 				// Handler for entity link click
 				Communicator.mediator.on('panel:click', function(eData) {
 
-					// When the user clicks a link we want to clear any existing panels after it
-					var clickedPanelFound = false,
-						viewsToRemove = [],
-						i;
+					self.panelsView.clearPanels(eData.view);
 
-					this.viewSitter.each(function(view, i) {
-						if(clickedPanelFound) {
-							viewsToRemove.push(view);
-						}
-						else if(view.cid === eData.view.cid) {
-							clickedPanelFound = true;
-						}
+					var req = OvationService.getEntitiesWithUri(eData.entityLinkModel.get('href'));
+
+					req.done(function(data) {
+						var newPanel = new EntitiesPanelView({
+							model: eData.entityModel,
+							collection: data
+						});
+						self.panelsView.addPanel(newPanel);
 					});
-					for(i = 0; i < viewsToRemove.length; i++) {
-						this.viewSitter.remove(viewsToRemove[i]);
-						viewsToRemove[i].remove();
-					}
 
-					// Get the data for the next panel
-					$.ajax({
-						url: eData.entityLinkModel.get('href'),
-						type: 'GET',
-						dataType: 'json',
-						success: function(data) {
-
-							// Create a new collection for the returned entities
-							var entitiesCollection = new EntitiesCollection(),
-								// Initialize a panel view to display the entities
-								newPanel = new EntitiesPanelView({
-									model: eData.entityModel,
-									collection: entitiesCollection
-								}),
-								newContainerWidth;
-
-							// Show panel
-							newPanel.render();
-							entitiesCollection.reset(data);
-							this.viewSitter.add(newPanel);
-							panelsView.viewContainerEl.append(newPanel.$el);
-							newContainerWidth = newPanel.$el.outerWidth() * this.viewSitter.length;
-							panelsView.viewContainerEl.width(newContainerWidth);
-						}
-					});
 				});
 
 			},

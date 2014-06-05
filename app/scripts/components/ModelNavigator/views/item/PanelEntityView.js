@@ -2,8 +2,6 @@ define([
 	'backbone',
 	'communicator',
 	'hbs!../../templates/item/EntityViewTemplate',
-	'../../collections/EntityLinkCollection',
-	'../collection/EntityLinkCollectionView',
 	'hbs!../../templates/item/ProjectEntityViewTemplate',
 	'hbs!../../templates/item/SourceEntityViewTemplate',
 	'hbs!../../templates/item/ProtocolEntityViewTemplate',
@@ -12,13 +10,15 @@ define([
 	'hbs!../../templates/item/MeasurementEntityViewTemplate',
 	'plupload'
 	],
-	function( Backbone, Communicator, EntityViewTemplate, EntityLinkCollection, EntityLinkCollectionView, ProjectEntityViewTemplate, SourceEntityViewTemplate, ProtocolEntityViewTemplate, ExperimentEntityViewTemplate, EpochEntityViewTemplate, MeasurementEntityViewTemplate ) {
+	function( Backbone, Communicator, EntityViewTemplate, ProjectEntityViewTemplate, SourceEntityViewTemplate, ProtocolEntityViewTemplate, ExperimentEntityViewTemplate, EpochEntityViewTemplate, MeasurementEntityViewTemplate ) {
 		'use strict';
 
 		/* Return a ItemView class definition */
 		return Backbone.Marionette.ItemView.extend({
 			tagName: 'li',
-			initialize: function() {},
+			initialize: function() {
+				this.linksAdded = false;
+			},
 
 			template: EntityViewTemplate,
 
@@ -28,40 +28,22 @@ define([
 			/* Ui events hash */
 			events: {
 				'click': function() {
-					var i, linksArray, links;
-					if(!this.entityLinkCollection && this.model.get('links').data_resource === undefined) {
-						this.entityLinkCollection = new EntityLinkCollection();
-						linksArray = [];
-						links = this.model.get('links');
-						for(i in links) {
-							links[i]['display_name'] = i;
-							linksArray.push(links[i]);
-						}
-						this.entityLinkCollection.reset(linksArray);
-						this.entityLinkCollectionView = new EntityLinkCollectionView({
-							collection: this.entityLinkCollection
+					// For now we only follow the primary link
+					if(this.model.get('ui_hints').get('primary_link')) {
+						this.trigger('entitylink:click', {
+							entityLinkModel: this.model.get('ui_hints').get('primary_link'),
+							entityModel: this.model
 						});
-						this.$el.append(this.entityLinkCollectionView.$el);
-						this.entityLinkCollectionView.render();
-						this.listenTo(this.entityLinkCollectionView, 'entitylink:click', function(entityLinkModel) {
-							this.trigger('entitylink:click', {
-								entityLinkModel: entityLinkModel,
-								entityModel: this.model
-							});
-						})
-						this.entityLinkCollectionView.$el.slideToggle();
-					}
-					else if(this.entityLinkCollection) {
-						this.entityLinkCollectionView.$el.slideToggle();
 					}
 					this.trigger('entity:click');
-					return false;
 				}
 			},
 
 			/* on render callback */
 			onRender: function() {
+				this.$el.html(this.template(this.model.get('ui_hints').toJSON()))
 				var container = this.$el.find('.entity-attributes-container:first'), entityTemplate;
+				var attrJSON = this.model.get('attributes').toJSON();
 				switch(this.model.get('type')) {
 					case 'Project':
 						entityTemplate = ProjectEntityViewTemplate;
@@ -74,6 +56,8 @@ define([
 						break;
 					case 'Experiment':
 						entityTemplate = ExperimentEntityViewTemplate;
+						var start = new Date(attrJSON.start);
+						attrJSON.start = start.getFullYear() + '-' + (start.getMonth() + 1) + '-' + start.getDate();
 						break;
 					case 'Epoch':
 						entityTemplate = EpochEntityViewTemplate;
@@ -83,8 +67,8 @@ define([
 						break;
 				}
 				if(entityTemplate) {
-					container.html(entityTemplate(this.model.toJSON()));
-				}	
+					container.html(entityTemplate(attrJSON));
+				}
 			},
 
 			onShow: function() {

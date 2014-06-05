@@ -1,11 +1,10 @@
 define([
 	'backbone',
 	'communicator',
-	'controllers/Service',
 	'controllers/OvationWeb'
 	],
 
-	function( Backbone, Communicator, ServiceController, OvationWebController ) {
+	function( Backbone, Communicator, OvationWebController ) {
 		'use strict';
 
 		var App = new Backbone.Marionette.Application();
@@ -14,9 +13,6 @@ define([
 		App.addInitializer( function () {
 
 			Communicator.mediator.trigger("APP:START");
-
-			// Service controller for intercepting ajax requests
-			var serviceController = new ServiceController();
 			
 			var ovationWebController = new OvationWebController();
 

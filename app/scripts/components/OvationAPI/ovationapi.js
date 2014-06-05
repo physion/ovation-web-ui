@@ -89,6 +89,26 @@
 		$(this).on(eventName, callback);
 	}
 
+	OvationAPI.Entity = {
+		getEntitiesWithUri: function(uri) {
+			var deferred = $.Deferred();
+			return $.ajax({
+				url: 'http://localhost:3000' + uri,
+				type: 'GET',
+				dataType: 'json',
+				data: {
+					'api-key': OvationAPI.userData['api_key']
+				},
+				success: function(data) {
+					$.each(data, function(i, value) {
+						OvationAPI.convertToUI(value);
+					});
+					deferred.resolve(data);
+				}
+			})
+		}
+	}
+
 	OvationAPI.Project = {
 		getUserProjects: function() {
 			var deferred = $.Deferred();
@@ -166,6 +186,7 @@
 				}
 				if (doc.links.experiments != null) {
 					ui_hints.primary_link = doc.links.experiments;
+					ui_hints.primary_link.display_name = "Experiments"
 				}
 				ui_hints.secondary_link = null;
 				break;
@@ -173,11 +194,11 @@
 				if (doc.attributes.purpose != null) {
 					ui_hints.display_name = doc.attributes.purpose;
 				}
-				if (doc.links.epoch_groups != null) {
-					ui_hints.primary_link = doc.links.epoch_groups;
-				}
 				if (doc.links.epoch != null) {
-					ui_hints.secondary_link = doc.links.epoch;
+					ui_hints.primary_link = doc.links.epoch;
+				}
+				if (doc.links.epoch_groups != null) {
+					ui_hints.secondary_link = doc.links.epoch_groups;
 				}
 				break;
 			case "EpochGroup":
@@ -195,9 +216,11 @@
 				ui_hints.display_name = "" + (doc.attributes.label != null ? doc.attributes.label : void 0) + "(" + (doc.attributes.identifier != null ? doc.attributes.identifier : void 0) + ")";
 				if (doc.links.children != null) {
 					ui_hints.primary_link = doc.links.children;
+					ui_hints.primary_link.display_name = "Children";
 				}
 				if (doc.links.experiments != null) {
 					ui_hints.secondary_link = doc.links.experiments;
+					ui_hints.secondary_link.display_name = "Experiments";
 				}
 				break;
 			case "Epoch":
@@ -227,9 +250,11 @@
 				ui_hints.display_name = "" + (doc.attributes.name != null ? doc.attributes.name : void 0) + "(" + (doc.attributes.version != null ? doc.attributes.version : void 0) + ")";
 				if (doc.links.children != null) {
 					ui_hints.primary_link = doc.links.children;
+					ui_hints.primary_link.display_name = "Children";
 				}
 				if (doc.links.procedures != null) {
 					ui_hints.secondary_link = doc.links.procedures;
+					ui_hints.secondary_link.display_name = "Procedures";
 				}
 		}
 		doc.ui_hints = ui_hints;

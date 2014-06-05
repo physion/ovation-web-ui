@@ -19,7 +19,7 @@ define([
 			/* Ui events hash */
 			events: {
 				'click': function(e) {
-					this.trigger("entitylink:click", this.model);
+					this.trigger("click", this.model);
 					return false;
 				}
 			},
