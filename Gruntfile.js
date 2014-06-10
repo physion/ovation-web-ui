@@ -252,7 +252,9 @@ module.exports = function (grunt) {
                         '*.{ico,txt}',
                         '.htaccess',
                         'images/{,*/}*.{webp,gif}',
-                        'bower_components/requirejs/require.js'
+                        'bower_components/requirejs/require.js',
+                        'fonts/*',
+                        'bower_components/jquery-ui/themes/base/**'
                     ]
                 }]
             }
