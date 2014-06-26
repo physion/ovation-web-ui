@@ -1,6 +1,8 @@
 #model-navigator-region {
 	float: left;
 	width: 200px;
+	padding-top: 10px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
 }
 
 .model-navigator {
@@ -9,7 +11,7 @@
 }
 
 .model-navigator .lead {
-	margin-left: 12px;
+  padding-left: 10px;
 }
 
 .model-navigator-active-view-region {
@@ -34,6 +36,10 @@
 	padding: 6px;
 	width: 150px;
 	overflow-y: scroll;
+}
+
+.last-panel {
+	border-right: none;
 }
 
 .model-navigator-panel ul {
@@ -70,11 +76,22 @@
 }
 
 .entity-name-container .entity-name {
-	width: 90%;
+	width: 82%;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	display: block;
+	float: left;
+}
+
+.entity-name-container img {
+	float: left;
+	margin-top: 4px;
+	margin-right: 4px;
+}
+
+.entity-name-container .entity-attributes-container {
+	clear: both;
 }
 
 .model-navigator-panel .glyphicon-chevron-right,

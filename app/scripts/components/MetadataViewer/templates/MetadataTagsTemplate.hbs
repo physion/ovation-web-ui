@@ -1,11 +1,13 @@
-<span class="lead">Tags</span>
-<div>
-{{#each tags}}
-  {{@key}}
-  <ul>
-  {{# each this}}
-  	<li>{{ this }}</li>
-  {{/each}}
-  </ul>
-{{/each}}
+<div class="metadata-view-entity-container">
+	<span class="lead">Tags</span>
+	<div>
+	{{#each tags}}
+		<div class="user-tags">
+	  <span class="user-tags-user metadata-user">{{@key}}</span>
+	  {{# each this}}
+	  	<span class="user-tag label label-primary">{{ this }}</span>
+	  {{/each}}
+	  </div>
+	{{/each}}
+	</div>
 </div>

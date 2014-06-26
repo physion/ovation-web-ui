@@ -64,6 +64,24 @@ function( Backbone ) {
 				url: /^\/api\/v1\/entities\/.*measurements/,
 				proxy: 'mockdata/measurements.json'
 			});
+
+			//Demo 
+			$.mockjax({
+				url: /^.*project*/,
+				proxy: 'mockdata/projects.json'
+			});
+			$.mockjax({
+				url: /^.*\/api\/v1\/entities\/.*experiments/,
+				proxy: 'mockdata/experiments.json'	
+			});
+			$.mockjax({
+				url: /^.*\/api\/v1\/entities\/.*epochs/,
+				proxy: 'mockdata/epochs.json'	
+			});
+			$.mockjax({
+				url: /^.*\/api\/v1\/entities\/.*measurements/,
+				proxy: 'mockdata/measurements.json'	
+			});
 			/*
 			Need attachments, analysis_records, equipment setup, epoch groups, 
 			*/

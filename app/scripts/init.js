@@ -36,6 +36,9 @@ require.config({
         },
         jqueryValidate: {
             deps: ['jquery']
+        },
+        c3: {
+            deps: ['d3']
         }
     },
 
@@ -82,7 +85,11 @@ require.config({
 
         ovationService: 'controllers/OvationServiceController',
 
-        ovationApi: 'components/OvationAPI/ovationapi'
+        ovationApi: 'components/OvationAPI/ovationapi',
+
+        c3: '../bower_components/c3/c3',
+
+        d3: '../bower_components/d3/d3'
     },
 
     hbs: {

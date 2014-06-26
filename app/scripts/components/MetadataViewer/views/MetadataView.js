@@ -18,7 +18,7 @@ define([
 
 					self.$el.empty();
 
-					var attributes = entityModel.get('attributes');
+					var attributes = entityModel.get('attributes').toJSON();
 
 					self.$el.append(MetadataTagsTemplate(attributes));
 					self.$el.append(MetadataPropertiesTemplate(attributes));

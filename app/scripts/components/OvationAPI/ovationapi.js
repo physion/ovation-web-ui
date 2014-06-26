@@ -194,8 +194,8 @@
 				if (doc.attributes.purpose != null) {
 					ui_hints.display_name = doc.attributes.purpose;
 				}
-				if (doc.links.epoch != null) {
-					ui_hints.primary_link = doc.links.epoch;
+				if (doc.links.epochs != null) {
+					ui_hints.primary_link = doc.links.epochs;
 				}
 				if (doc.links.epoch_groups != null) {
 					ui_hints.secondary_link = doc.links.epoch_groups;
@@ -224,7 +224,8 @@
 				}
 				break;
 			case "Epoch":
-				ui_hints.display_name = "" + (doc.attributes.label != null ? doc.attributes.label : void 0) + "(" + (doc.attributes.identifier != null ? doc.attributes.identifier : void 0) + ")";
+				//ui_hints.display_name = "" + (doc.attributes.label != null ? doc.attributes.label : void 0) + "(" + (doc.attributes.identifier != null ? doc.attributes.identifier : void 0) + ")";
+				ui_hints.display_name = doc.attributes.name;
 				if (doc.links.measurements != null) {
 					ui_hints.primary_link = doc.links.measurements;
 				}

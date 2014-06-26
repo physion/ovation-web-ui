@@ -1,13 +1,17 @@
 <span class="lead">Notes</span>
-<div>
-{{#each notes}}
-  {{@key}}
-  {{# each this}}
-  	<ul>
-  	{{#each this }}
-  		<li><strong>{{@key}}</strong> {{ this }}</li>
-  	{{/each}}
-  	</ul>
-  {{/each}}
-{{/each}}
+<div class="notes-container">
+
+		{{#each notes}}
+			{{#each this }}
+				<div class="notes-user">{{@key}}</div>
+				<div class="bubble">
+				<div class="pointer"></div>
+				<div class="pointerBorder"></div>
+				<div class="bubble-body">
+					{{ this }}
+				</div>
+				</div>
+			{{/each}}
+		{{/each}}
+
 </div>

@@ -4,6 +4,11 @@
 	text-align: left;
 	height: 97%;
 	overflow: scroll;
+	padding-top: 13px;
+}
+
+.metadata-viewer {
+	padding-right: 20px;
 }
 
 .metadata-viewer .lead {
@@ -12,4 +17,89 @@
 
 .metadata-viewer ul {
 	padding-left: 14px;
+}
+
+.notes-container ul {
+	padding-left: 0;
+}
+
+.notes-container li {
+	list-style: none;
+}
+
+.metadata-view-entity-container {
+	margin-bottom: 10px;
+}
+
+.user-tags-user {
+	display: block;
+}
+
+.bubble
+{
+position: relative;
+width: 170px;
+padding: 0px;
+background: #FFFFFF;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border: #EEE solid 2px;
+margin-bottom: 10px;
+}
+
+.bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 0 12px 10px;
+border-color: #FFFFFF transparent;
+display: block;
+width: 0;
+z-index: 1;
+top: -10px;
+left: 14px;
+}
+
+.bubble:before
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 0 13px 11px;
+border-color: #EEE transparent;
+display: block;
+width: 0;
+z-index: 0;
+top: -13px;
+left: 13px;
+}
+
+.bubble-body {
+	padding: 6px;
+	font-size: 13px;
+}
+
+.metadata-user {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.notes-user {
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 12px;
+}
+
+ul.property-list {
+	padding: 0;
+}
+
+.property-list strong {
+	color: #999;
+}
+
+.user-property {
+	list-style: none;
 }

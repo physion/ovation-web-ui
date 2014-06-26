@@ -2,9 +2,10 @@ define([
 	'backbone',
 	'communicator',
 	'../views/layout/MainLayout',
-	'../views/item/ProjectView'
+	'../views/item/ProjectView',
+	'../views/item/MeasurementView'
 ],
-function( Backbone, Communicator, MainLayout, ProjectView ) {
+function( Backbone, Communicator, MainLayout, ProjectView, MeasurementView ) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -21,6 +22,12 @@ function( Backbone, Communicator, MainLayout, ProjectView ) {
 						model: entityModel
 					});
 					layout.main.show(projectView);
+				}
+				if(entityModel.get('type') == 'Measurement') {
+					var mView = new MeasurementView({
+						model: entityModel
+					});
+					layout.main.show(mView);
 				}
 			})
 		}

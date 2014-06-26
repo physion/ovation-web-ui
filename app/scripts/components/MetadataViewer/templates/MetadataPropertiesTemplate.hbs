@@ -1,10 +1,10 @@
 <span class="lead">Properties</span>
 <div>
 {{#each properties}}
-  {{@key}}
-  <ul>
+  <span class="metadata-user">{{@key}}</span>
+  <ul class="property-list">
   {{# each this}}
-  	<li><strong>{{ @key }}</strong> {{ this }}</li>
+  	<li class="user-property"><strong>{{ @key }}</strong>: {{ this }}</li>
   {{/each}}
   </ul>
 {{/each}}
