@@ -41,9 +41,12 @@ define([
 			},
 
 			resize: function() {
-				var panelWidth = this.viewContainerEl.children().last().outerWidth();
+				var children = this.viewContainerEl.children();
+				var panelWidth = children.last().outerWidth();
 				var newContainerWidth = panelWidth * this.viewSitter.length;
 				this.viewContainerEl.width(newContainerWidth);
+				children.removeClass('last-panel');
+				children.last().addClass('last-panel');
 			},
 
 			events: {}

@@ -18,15 +18,11 @@
                 "investigator" : "Keith"
             }
         },
-        "notes" : {
-            "kvedananda" : [
-                {
-                    "timestamp" : "...",
-                    "text" : "Note text",
-                    "findings" : "Hey all found some really interesting results today..."
-                }
-            ]
-        }
+        "notes" : 
+          [
+            {"kvedananda": "Found a really interesting result today."} ,
+            {"kvedananda": "Check it out when you get a chance."}  
+          ]
     },
     "links" : {
         "experiments" : {

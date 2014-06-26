@@ -41,12 +41,13 @@ define([
 
 			/* on render callback */
 			onRender: function() {
-				this.$el.html(this.template(this.model.get('ui_hints').toJSON()))
-				var container = this.$el.find('.entity-attributes-container:first'), entityTemplate;
+				var uiHints = this.model.get('ui_hints').toJSON();
+				var entityTemplate;
 				var attrJSON = this.model.get('attributes').toJSON();
 				switch(this.model.get('type')) {
 					case 'Project':
 						entityTemplate = ProjectEntityViewTemplate;
+						uiHints.image = 'images/project.png';
 						break;
 					case 'Source':
 						entityTemplate = SourceEntityViewTemplate;
@@ -56,17 +57,27 @@ define([
 						break;
 					case 'Experiment':
 						entityTemplate = ExperimentEntityViewTemplate;
+						uiHints.image = 'images/experiment.png';
 						var start = new Date(attrJSON.start);
 						attrJSON.start = start.getFullYear() + '-' + (start.getMonth() + 1) + '-' + start.getDate();
 						break;
 					case 'Epoch':
 						entityTemplate = EpochEntityViewTemplate;
+						uiHints.image = 'images/epoch.png';
+						var start = new Date(attrJSON.start);
+						attrJSON.start = start.getFullYear() + '-' + (start.getMonth() + 1) + '-' + start.getDate();
+						var end = new Date(attrJSON.end);
+						attrJSON.end = end.getFullYear() + '-' + (end.getMonth() + 1) + '-' + end.getDate();
 						break;
 					case 'Measurement':
 						entityTemplate = MeasurementEntityViewTemplate;
+						uiHints.image = 'images/analysis-record.png';
 						break;
 				}
+				this.$el.html(this.template(uiHints));
+				var container = this.$el.find('.entity-attributes-container:first');
 				if(entityTemplate) {
+					console.log(attrJSON);
 					container.html(entityTemplate(attrJSON));
 				}
 			},
