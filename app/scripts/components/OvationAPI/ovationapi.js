@@ -29,20 +29,22 @@
 		}
 		else {
 			this.userData = JSON.parse(userData);
-			$.ajax({
-				url: 'http://localhost:3000/project',
-				type: 'GET',
-				dataType: 'json',
-				data: {
-					'api-key': this.userData['api_key']
-				}
-			})
-			.done(function() {
-				self.trigger("OvationAPI:authenticated");
-			})
-			.error(function() {
-				self.trigger("OvationAPI:login-needed");
-			});
+			self.trigger("OvationAPI:authenticated");
+			// Holding off on api key verification for now
+			// $.ajax({
+			// 	url: 'http://localhost:3000/project',
+			// 	type: 'GET',
+			// 	dataType: 'json',
+			// 	data: {
+			// 		'api-key': this.userData['api_key']
+			// 	}
+			// })
+			// .done(function() {
+			// 	self.trigger("OvationAPI:authenticated");
+			// })
+			// .error(function() {
+			// 	self.trigger("OvationAPI:login-needed");
+			// });
 		}
 	}
 
@@ -62,6 +64,10 @@
 			self.setCookie('ovationUser', JSON.stringify(data));
 			self.trigger("OvationAPI:authenticated");
 		});
+	}
+
+	OvationAPI.getUserData = function() {
+		return this.userData;
 	}
 
 	OvationAPI.setCookie = function setCookie(cname, cvalue, exdays) {

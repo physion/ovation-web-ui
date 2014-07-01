@@ -10,15 +10,32 @@ define([
 
 			initialize: function() {
 				var self = this;
-
+		
 				OvationAPI.on("OvationAPI:login-needed", function() {
 					self.trigger("login-needed");
 				});
 
 				OvationAPI.on("OvationAPI:authenticated", function() {
-					self.trigger("authenticated");
+					var userData = self.userData = OvationAPI.getUserData();
+					self.trigger('authenticated');
+					$.ajax({
+						url: 'https://ovation-io-dev.cloudant.com/_session',
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							name: userData['cloudant_key'],
+							password: userData['cloudant_password']
+						},
+						xhrFields: {
+							withCredentials:true
+						}
+					})
+					.success(function(data) {
+						if(data.ok) {
+							self.changeHandler();
+						}
+					});
 				});
-
 			},
 
 			authenticate: function() {
@@ -64,6 +81,35 @@ define([
 			convertToBackbone: function(data) {
 				var collection = new EntityCollection( data, {parse: true} );
 				return collection;
+			},
+
+			changeHandler: function(since) {
+				var since = since || 0,
+					self = this;
+				function loop(){
+					self.changeHandler(since);
+				}
+				$.ajax({
+					url: this.userData['cloudant_db_url'] + '/_changes',
+					dataType: 'json',
+					data: {
+						since: since,
+						feed: 'longpoll'
+					},
+					xhrFields: {
+						withCredentials:true
+					}
+				})
+				.success(function(data) {
+					if(since !== data.last_seq) {
+						since = data.last_seq;
+						console.log('change', data.results);
+					}
+					loop();
+				})
+				.error(function(data) {
+					setTimeout(loop, 5000);
+				});
 			}
 
 		});

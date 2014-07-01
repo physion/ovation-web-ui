@@ -13,7 +13,7 @@ define([
 		/* Add initializers here */
 		App.addInitializer( function () {
 
-			var mockjax = new MockjaxController();
+			//var mockjax = new MockjaxController();
 
 			Communicator.mediator.trigger("APP:START");
 			
