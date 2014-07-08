@@ -1,10 +1,10 @@
 define([
 	'backbone',
 	'../views/layout/MainLayout',
-	'./PanelsController',
+	'PanelView',
 	'jqueryui'
 ],
-function( Backbone, MainLayout, PanelsController ) {
+function( Backbone, MainLayout, PanelView ) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -13,10 +13,11 @@ function( Backbone, MainLayout, PanelsController ) {
 			var layout = new MainLayout(),
 				model = options.model,
 				region = options.region,
-				panelsController;
+				panelView;
 
 			region.show(layout);
-			panelsController = new PanelsController({
+
+			panelView = new PanelView({
 				region: layout.activeViewRegion
 			});
 

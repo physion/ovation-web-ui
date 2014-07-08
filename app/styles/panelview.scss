@@ -1,0 +1,47 @@
+.panel-view-history-region {
+	display: none;
+}
+
+.panel-view-controls .btn {
+	padding: 6px 8px;
+	background: linear-gradient(to bottom, #fff 0, #f0f0f0 100%);
+}
+
+.panel-view-controls .btn[disabled] {
+	opacity: 0.5;
+}
+
+.btn-group-wrap {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.panel-view .list-group-item {
+	border-radius: 0px;
+	padding: 10px 12px 8px 12px;
+	border-left: none;
+	border-right: none;
+}
+
+.panel-view h5 {
+	display: inline-block;
+	margin-bottom: 0;
+}
+
+.panel-icon {
+	margin-right: 10px;
+}
+
+.panel-next {
+	float: right;
+	margin-top: 1px;
+}
+
+.panel-entity {
+	cursor: pointer;
+}
+
+.panel-entity .list-group-item-text {
+	margin-left: 25px;
+	font-size: 12px;
+}

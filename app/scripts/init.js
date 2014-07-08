@@ -91,6 +91,13 @@ require.config({
 
         d3: '../bower_components/d3/d3'
     },
+    packages: [
+        {
+            'name': 'PanelView',
+            'location': 'components/PanelView',
+            'main': 'controllers/PanelViewController'
+        }
+    ],
 
     hbs: {
         disableI18n: true

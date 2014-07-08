@@ -2,9 +2,10 @@ define([
 		'backbone',
 		'ovationApi',
 		'models/EntityModel',
-		'collections/EntityCollection'
+		'collections/EntityCollection',
+		'controllers/OvationServiceIndex'
 	],
-	function( Backbone, OvationAPI, EntityModel, EntityCollection) {
+	function( Backbone, OvationAPI, EntityModel, EntityCollection, OvationServiceIndex) {
 
 		var OvationServiceController = Backbone.Marionette.Controller.extend({
 
@@ -73,14 +74,18 @@ define([
 					req = method(),
 					self = this;
 				req.done(function(data) {
-					deferred.resolve(self.convertToBackbone(data));
+					var dataCollection = self.convertToBackbone(data),
+						returnCollection = new EntityCollection();
+					dataCollection.each(function(model, i) {
+						returnCollection.add(OvationServiceIndex.addOrGetModel(model));
+					});
+					deferred.resolve(returnCollection);
 				});
 				return deferred.promise();
 			},
 
 			convertToBackbone: function(data) {
-				var collection = new EntityCollection( data, {parse: true} );
-				return collection;
+				return new EntityCollection( data, {parse: true} );
 			},
 
 			changeHandler: function(since) {
@@ -103,13 +108,34 @@ define([
 				.success(function(data) {
 					if(since !== data.last_seq) {
 						since = data.last_seq;
-						console.log('change', data.results);
+						_.each(data.results, function(change, i) {
+							if(/[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}/.test(change['id'])) {
+								console.log(change);
+							}
+							else if(/[a-fA-F0-9]{32}/.test(change['id'])) {
+								console.log(change);
+							}
+						})
 					}
 					loop();
 				})
 				.error(function(data) {
 					setTimeout(loop, 5000);
 				});
+			},
+
+			createProject: function(project) {
+				var deferred = $.Deferred(),
+					self = this;
+				OvationAPI.Project.createProject(project).done(function(data) {
+					var dataCollection = self.convertToBackbone(data),
+						returnCollection = new EntityCollection();
+					dataCollection.each(function(model, i) {
+						returnCollection.add(OvationServiceIndex.addOrGetModel(model));
+					});
+					deferred.resolve(returnCollection);
+				});
+				return deferred.promise();
 			}
 
 		});
