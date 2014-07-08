@@ -55,6 +55,12 @@ function( Backbone, MainLayout, DefaultPanel, EntitiesPanelView, HistoryView, Ov
 				}
 			});
 
+			Communicator.mediator.on('CreateEntity:Project', function(project) {
+				OvationService.createProject(project).done(function(data) {
+					self.layout.mainRegion.currentView.collection.add(data.at(0));
+				});
+			});
+
 		},
 
 		showHomePanel: function() {
@@ -63,17 +69,21 @@ function( Backbone, MainLayout, DefaultPanel, EntitiesPanelView, HistoryView, Ov
 				displayName: 'Home',
 				url: ''
 			}));
+			this.layout.disableAdd();
 		},
 
 		showProjectsPanel: function() {
 			var self = this;
 			OvationService.getUserProjects().done(function(collection) {
-				self.layout.mainRegion.show(new EntitiesPanelView({ collection: collection }));
+				self.layout.mainRegion.show(new EntitiesPanelView({ collection: collection, method: OvationService.getUserProjects }));
 				self.historyCollection.add(new Backbone.Model({
 					displayName: 'Projects',
 					url: ''
-				}))
+				}));
+				self.layout.setAddEntityType('Project');
+				self.layout.enableAdd();
 			});
+
 		}
 
 	});

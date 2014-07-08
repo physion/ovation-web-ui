@@ -122,6 +122,20 @@ define([
 				.error(function(data) {
 					setTimeout(loop, 5000);
 				});
+			},
+
+			createProject: function(project) {
+				var deferred = $.Deferred(),
+					self = this;
+				OvationAPI.Project.createProject(project).done(function(data) {
+					var dataCollection = self.convertToBackbone(data),
+						returnCollection = new EntityCollection();
+					dataCollection.each(function(model, i) {
+						returnCollection.add(OvationServiceIndex.addOrGetModel(model));
+					});
+					deferred.resolve(returnCollection);
+				});
+				return deferred.promise();
 			}
 
 		});

@@ -133,6 +133,21 @@
 				}
 			});
 			return deferred.promise();
+		},
+
+		createProject: function(project) {
+			return $.ajax({
+				url: 'http://localhost:3000/project?api-key=' + OvationAPI.userData['api_key'],
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				data: JSON.stringify(project),
+				success: function(data) {
+					$.each(data, function(i , value) {
+						OvationAPI.convertToUI(value);
+					});
+				}
+			})
 		}
 	}
 
