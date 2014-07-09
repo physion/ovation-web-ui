@@ -10,6 +10,8 @@
 	padding: 0 20px;
 }
 
+/* Project View */
+
 .entity-viewer-project-view textarea {
 	width: 50%;
 }
@@ -41,3 +43,6 @@
 	margin-top: 16px;
 }
 
+.delete-project {
+	float: right;
+}

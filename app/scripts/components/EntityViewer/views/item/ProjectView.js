@@ -1,9 +1,10 @@
 define([
 	'backbone',
 	'hbs!../../templates/item/ProjectViewTemplate',
+	'communicator',
 	'jqueryui'
 	],
-	function( Backbone, ProjectViewTemplate ) {
+	function( Backbone, ProjectViewTemplate, Communicator ) {
 		'use strict';
 
 		/* Return a ItemView class definition */
@@ -11,7 +12,12 @@ define([
 
 			tagName: 'div',
 
-			initialize: function() {},
+			initialize: function() {
+				this.listenTo(this.model, 'destroy', function() {
+					this.close();
+					this.remove();
+				});
+			},
 
 			template: ProjectViewTemplate,
 
@@ -19,7 +25,11 @@ define([
 			ui: {},
 
 			/* Ui events hash */
-			events: {},
+			events: {
+				'click .delete-project': function() {
+					Communicator.mediator.trigger('Entity:Delete', this.model);
+				}
+			},
 
 			/* on render callback */
 			onRender: function() {
