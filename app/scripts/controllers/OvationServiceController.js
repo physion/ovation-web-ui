@@ -136,6 +136,15 @@ define([
 					deferred.resolve(returnCollection);
 				});
 				return deferred.promise();
+			},
+
+			deleteEntity: function(entityModel) {
+				var deferred = $.Deferred(),
+					self = this;
+				OvationAPI.Project.deleteProject(entityModel).done(function() {
+					entityModel.destroy();
+					//TODO: also delete from the model index
+				});
 			}
 
 		});

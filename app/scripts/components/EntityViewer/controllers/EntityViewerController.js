@@ -3,9 +3,10 @@ define([
 	'communicator',
 	'../views/layout/MainLayout',
 	'../views/item/ProjectView',
-	'../views/item/MeasurementView'
+	'../views/item/MeasurementView',
+	'ovationService'
 ],
-function( Backbone, Communicator, MainLayout, ProjectView, MeasurementView ) {
+function( Backbone, Communicator, MainLayout, ProjectView, MeasurementView, OvationService ) {
     'use strict';
 
 	return Backbone.Marionette.Controller.extend({
@@ -29,7 +30,11 @@ function( Backbone, Communicator, MainLayout, ProjectView, MeasurementView ) {
 					});
 					layout.main.show(mView);
 				}
-			})
+			});
+
+			Communicator.mediator.on('Entity:Delete', function(entityModel) {
+				OvationService.deleteEntity(entityModel);
+			});
 		}
 
 	});

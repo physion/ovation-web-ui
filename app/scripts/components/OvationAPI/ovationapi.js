@@ -148,6 +148,17 @@
 					});
 				}
 			})
+		},
+
+		deleteProject: function(project) {
+			return $.ajax({
+				url: 'http://localhost:3000/project/' + project.get('_id') + '?api-key=' + OvationAPI.userData['api_key'],
+				type: 'DELETE',
+				dataType: 'json',
+				contentType: 'application/json',
+				success: function(data) {}
+				//TODO should actually check for error here because that one project doesnt work for anything and there may be others
+			});
 		}
 	}
 
