@@ -1,6 +1,10 @@
 <div class="entity-viewer-project-view">
 	<span class="lead">{{ attributes.name }}</span>
-	<button class="btn btn-default delete-project" title="Delete Project"><span class="fa fa-lg fa-trash-o"></span></button>
+	<input class="project-name" type="text" value="{{ attributes.name }}" />
+	<div class="btn-group">
+		<button class="btn btn-default save-project" title="Save Project" disabled="disabled"><span class="fa fa-lg fa-floppy-o"></span></button>
+		<button class="btn btn-default delete-project" title="Delete Project"><span class="fa fa-lg fa-trash-o"></span></button>
+	</div>
 	<div>
 		<h5>Purpose</h5>
 		<textarea class="form-control">{{ attributes.purpose }}</textarea>

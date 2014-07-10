@@ -111,8 +111,21 @@
 					});
 					deferred.resolve(data);
 				}
-			})
-		}
+			});
+		},
+
+		saveEntity: function(entity) {
+			return $.ajax({
+				url: 'http://localhost:3000/entity/' + entity.get('_id') + '?api-key=' + OvationAPI.userData['api_key'],
+				type: 'PUT',
+				dataType: 'json',
+				contentType: 'application/json',
+				data: JSON.stringify(entity.toJSON()),
+				success: function(data) {
+					console.log(data);
+				}
+			});
+		} 
 	}
 
 	OvationAPI.Project = {

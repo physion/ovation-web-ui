@@ -145,6 +145,12 @@ define([
 					entityModel.destroy();
 					//TODO: also delete from the model index
 				});
+			},
+
+			saveEntity: function(entity) {
+				var deferred = $.Deferred(),
+					self = this;
+				OvationAPI.Entity.saveEntity(entity);
 			}
 
 		});

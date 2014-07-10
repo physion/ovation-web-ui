@@ -35,6 +35,10 @@ function( Backbone, Communicator, MainLayout, ProjectView, MeasurementView, Ovat
 			Communicator.mediator.on('Entity:Delete', function(entityModel) {
 				OvationService.deleteEntity(entityModel);
 			});
+
+			Communicator.mediator.on('Entity:Save', function(entity) {
+				OvationService.saveEntity(entity);
+			});
 		}
 
 	});
