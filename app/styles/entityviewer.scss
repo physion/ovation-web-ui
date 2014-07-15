@@ -43,6 +43,13 @@
 	margin-top: 16px;
 }
 
-.delete-project {
+.entity-viewer-project-view .btn-group {
 	float: right;
+}
+
+.entity-viewer-project-view .project-name {
+	display: block;
+	font-size: 18px;
+	margin-bottom: 6px;
+	display: none;
 }

@@ -111,7 +111,30 @@
 					});
 					deferred.resolve(data);
 				}
-			})
+			});
+		},
+
+		saveEntity: function(entity) {
+			return $.ajax({
+				url: 'http://localhost:3000/entity/' + entity.get('_id') + '?api-key=' + OvationAPI.userData['api_key'],
+				type: 'PUT',
+				dataType: 'json',
+				contentType: 'application/json',
+				data: JSON.stringify(entity.toJSON()),
+				success: function(data) {
+					console.log(data);
+				}
+			});
+		},
+
+		createEntity: function(entity) {
+			return $.ajax({
+				url: 'http://localhost:3000/entity?api-key=' + OvationAPI.userData['api_key'],
+				type: 'POST',
+				dataType: 'json',
+				contentType: 'application/json',
+				data: JSON.stringify(entity)
+			});
 		}
 	}
 
@@ -133,32 +156,6 @@
 				}
 			});
 			return deferred.promise();
-		},
-
-		createProject: function(project) {
-			return $.ajax({
-				url: 'http://localhost:3000/project?api-key=' + OvationAPI.userData['api_key'],
-				type: 'POST',
-				dataType: 'json',
-				contentType: 'application/json',
-				data: JSON.stringify(project),
-				success: function(data) {
-					$.each(data, function(i , value) {
-						OvationAPI.convertToUI(value);
-					});
-				}
-			})
-		},
-
-		deleteProject: function(project) {
-			return $.ajax({
-				url: 'http://localhost:3000/project/' + project.get('_id') + '?api-key=' + OvationAPI.userData['api_key'],
-				type: 'DELETE',
-				dataType: 'json',
-				contentType: 'application/json',
-				success: function(data) {}
-				//TODO should actually check for error here because that one project doesnt work for anything and there may be others
-			});
 		}
 	}
 

@@ -145,6 +145,23 @@ define([
 					entityModel.destroy();
 					//TODO: also delete from the model index
 				});
+			},
+
+			saveEntity: function(entity) {
+				var deferred = $.Deferred(),
+					self = this;
+				OvationAPI.Entity.saveEntity(entity);
+			},
+
+			createEntity: function(entity) {
+				var deferred = $.Deferred(),
+					self = this;
+				OvationAPI.Entity
+					.createEntity(entity.toJSON())
+					.done(function(data) {
+						deferred.resolve(data);
+					});
+				return deferred.promise();
 			}
 
 		});

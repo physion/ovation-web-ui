@@ -17,6 +17,10 @@ define([
 					this.close();
 					this.remove();
 				});
+
+				this.listenTo(this.model.get('attributes'), 'change', function() {
+					this.$el.find('.save-project').prop('disabled', false);
+				});
 			},
 
 			template: ProjectViewTemplate,
@@ -28,6 +32,22 @@ define([
 			events: {
 				'click .delete-project': function() {
 					Communicator.mediator.trigger('Entity:Delete', this.model);
+				},
+				'click .lead': function(e) {
+					$(e.currentTarget).hide();
+					this.$el.find('input.project-name:first').show();
+
+				},
+				'blur .project-name': function(e) {
+					var newName = $(e.currentTarget).val();
+					this.model.get('attributes').set('name', newName);
+					$(e.currentTarget).hide();
+					this.$el.find('.lead:first').text(newName).show();
+					console.log(this.model);
+				},
+
+				'click .save-project': function() {
+					Communicator.mediator.trigger('Entity:Save', this.model);
 				}
 			},
 

@@ -50,6 +50,9 @@ define([
 				switch(type) {
 					case 'Project':
 						var pView = new AddProjectView();
+						this.listenTo(pView, 'CreateEntity', function(model) {
+							this.trigger('CreateEntity', model);
+						});
 						this.modalRegion.show(pView);
 				}
 			},
