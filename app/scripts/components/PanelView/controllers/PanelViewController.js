@@ -55,9 +55,10 @@ function( Backbone, MainLayout, DefaultPanel, EntitiesPanelView, HistoryView, Ov
 				}
 			});
 
-			Communicator.mediator.on('CreateEntity:Project', function(project) {
-				OvationService.createProject(project).done(function(data) {
-					self.layout.mainRegion.currentView.collection.add(data.at(0));
+			this.listenTo(layout, 'CreateEntity', function(entity) {
+				OvationService.createEntity(entity).done(function(data) {
+					//TODO use EntityCollection
+					self.layout.mainRegion.currentView.collection.add(data);
 				});
 			});
 

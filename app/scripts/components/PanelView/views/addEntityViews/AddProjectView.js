@@ -1,10 +1,9 @@
 define([
 	'backbone',
 	'hbs!../../templates/addEntityTemplates/AddProjectTemplate',
-	'communicator',
-	'jqueryui'
+	'EntityModel'
 	],
-	function( Backbone, AddProjectTemplate, Communicator ){
+	function( Backbone, AddProjectTemplate, EntityModel ){
 		'use strict';
 
 		return Backbone.View.extend({
@@ -23,14 +22,17 @@ define([
 
 			'events': {
 				'click .submit': function() {
-					var name = this.$el.find('.project-name').val();
-					var purpose = this.$el.find('.project-purpose').val();
-					var start = this.$el.find('.purpose-start').val();
-					Communicator.mediator.trigger('CreateEntity:Project', {
+					var name = this.$el.find('.project-name').val(),
+						purpose = this.$el.find('.project-purpose').val(),
+						start = this.$el.find('.project-start').val(),
+						entityModel = new EntityModel();
+					entityModel.set('type', 'Project');
+					entityModel.get('attributes').set({
 						name: name,
 						purpose: purpose,
 						start: start
 					});
+					this.trigger('CreateEntity', entityModel);
 					this.$el.find('.project-name').val('');
 					this.$el.find('.project-purpose').val('');
 				}

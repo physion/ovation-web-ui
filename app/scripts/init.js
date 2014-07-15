@@ -96,6 +96,11 @@ require.config({
             'name': 'PanelView',
             'location': 'components/PanelView',
             'main': 'controllers/PanelViewController'
+        },
+        {
+            'name': 'EntityModel',
+            'location': 'components/EntityModel',
+            'main': 'EntityModel'
         }
     ],
 
