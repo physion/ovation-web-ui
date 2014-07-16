@@ -4,6 +4,42 @@ require.config({
 
     deps: ['backbone.marionette'],
 
+    shim: {
+        backbone: {
+            deps: [
+                'underscore',
+                'jquery'
+            ],
+            exports: 'Backbone'
+        },
+        bootstrap: {
+            deps: ['jquery'],
+            exports: 'jquery'
+        },
+        mockjax: {
+            deps: ['jquery'],
+            exports: 'jquery'
+        },
+        communicator: {
+            deps: ['backbone']
+        },
+        jqueryui: {
+            deps: ['jquery']
+        },
+        plupload: {
+            deps: ['moxie']
+        },
+        jqueryCookie: {
+            deps: ['jquery']
+        },
+        jqueryValidate: {
+            deps: ['jquery']
+        },
+        c3: {
+            deps: ['d3']
+        }
+    },
+
     paths: {
         spec: '../../test/spec', // lives in the test directory
 
@@ -34,9 +70,45 @@ require.config({
         /* require handlebars plugin - Alex Sexton */
         i18nprecompile: '../bower_components/require-handlebars-plugin/hbs/i18nprecompile',
         json2: '../bower_components/require-handlebars-plugin/hbs/json2',
-        hbs: '../bower_components/require-handlebars-plugin/hbs'
-    },
+        hbs: '../bower_components/require-handlebars-plugin/hbs',
+        mockjax: '../bower_components/jquery-mockjax/jquery.mockjax',
 
+        communicator: 'communicator',
+
+        jqueryui: '../bower_components/jquery-ui/ui/jquery-ui.custom',
+
+        plupload: '../bower_components/plupload/js/plupload.dev',
+        moxie: '../bower_components/plupload/js/moxie',
+
+        jqueryCookie: '../bower_components/jquery-cookie/jquery.cookie',
+
+        jqueryValidate: '../bower_components/jquery-validation/dist/jquery.validate',
+
+        ovationService: 'controllers/OvationServiceController',
+
+        ovationApi: 'components/OvationAPI/ovationapi',
+
+        c3: '../bower_components/c3/c3',
+
+        d3: '../bower_components/d3/d3'
+    },
+    packages: [
+        {
+            'name': 'PanelView',
+            'location': 'components/PanelView',
+            'main': 'controllers/PanelViewController'
+        },
+        {
+            'name': 'EntityModel',
+            'location': 'components/EntityModel',
+            'main': 'EntityModel'
+        },
+        {
+            'name': 'EntityCollection',
+            'location': 'components/EntityCollection',
+            'main': 'EntityCollection'
+        }
+    ],
     hbs: {
         disableI18n: true
     }
