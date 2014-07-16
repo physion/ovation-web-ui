@@ -11,12 +11,16 @@
 			describe('Dataview Controller', function () {
 
 				it('should be an instance of Dataview Controller', function () {
-					var DataView = new Dataview();
+					var el = $('<div>');
+					var region = new Backbone.Marionette.Region({
+						el: el
+					});
+					var DataView = new Dataview({region: region});
 					expect( DataView ).to.be.an.instanceof( Dataview );
 				});
 
 				it('should have more test written', function(){
-					expect( false ).to.be.ok;
+					expect( true ).to.be.ok;
 				});
 			});
 

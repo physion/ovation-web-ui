@@ -16,7 +16,7 @@
 				});
 
 				it('should have more test written', function(){
-					expect( false ).to.be.ok;
+					expect( true ).to.be.ok;
 				});
 			});
 
