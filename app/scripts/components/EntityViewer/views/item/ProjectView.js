@@ -31,7 +31,7 @@ define([
 			/* Ui events hash */
 			events: {
 				'click .delete-project': function() {
-					Communicator.mediator.trigger('Entity:Delete', this.model);
+					this.trigger('DeleteEntity', this.model);
 				},
 				'click .lead': function(e) {
 					$(e.currentTarget).hide();
@@ -47,7 +47,7 @@ define([
 				},
 
 				'click .save-project': function() {
-					Communicator.mediator.trigger('Entity:Save', this.model);
+					this.trigger('SaveEntity', this.model);
 				}
 			},
 
