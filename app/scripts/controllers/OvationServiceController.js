@@ -1,8 +1,8 @@
 define([
 		'backbone',
 		'ovationApi',
-		'models/EntityModel',
-		'collections/EntityCollection',
+		'EntityModel',
+		'EntityCollection',
 		'controllers/OvationServiceIndex'
 	],
 	function( Backbone, OvationAPI, EntityModel, EntityCollection, OvationServiceIndex) {
@@ -141,16 +141,25 @@ define([
 			deleteEntity: function(entityModel) {
 				var deferred = $.Deferred(),
 					self = this;
-				OvationAPI.Project.deleteProject(entityModel).done(function() {
-					entityModel.destroy();
+				OvationAPI.Entity.deleteEntity(entityModel.get('_id'))
+					.done(function() {
+						entityModel.destroy();
 					//TODO: also delete from the model index
 				});
+				return deferred.promise();
 			},
 
 			saveEntity: function(entity) {
 				var deferred = $.Deferred(),
-					self = this;
-				OvationAPI.Entity.saveEntity(entity);
+					self = this,
+					saveData = entity.toJSON();
+				delete saveData.ui_hints;
+				OvationAPI.Entity
+					.saveEntity(saveData)
+					.done(function(data) {
+						deferred.resolve(data);
+					});
+				return deferred.promise();
 			},
 
 			createEntity: function(entity) {

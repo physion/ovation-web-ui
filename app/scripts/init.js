@@ -101,6 +101,11 @@ require.config({
             'name': 'EntityModel',
             'location': 'components/EntityModel',
             'main': 'EntityModel'
+        },
+        {
+            'name': 'EntityCollection',
+            'location': 'components/EntityCollection',
+            'main': 'EntityCollection'
         }
     ],
 

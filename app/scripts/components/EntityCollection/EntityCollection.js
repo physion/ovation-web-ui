@@ -1,6 +1,6 @@
 define([
 	'backbone',
-	'models/EntityModel'
+	'EntityModel'
 	],
 	function( Backbone, EntityModel ) {
 		'use strict';

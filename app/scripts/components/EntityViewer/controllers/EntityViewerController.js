@@ -23,6 +23,12 @@ function( Backbone, Communicator, MainLayout, ProjectView, MeasurementView, Ovat
 						model: entityModel
 					});
 					layout.main.show(projectView);
+					this.listenTo(projectView, 'DeleteEntity', function(entityModel) {
+						OvationService.deleteEntity(entityModel);
+					});
+					this.listenTo(projectView, 'SaveEntity', function(entityModel) {
+						OvationService.saveEntity(entityModel);
+					})
 				}
 				if(entityModel.get('type') == 'Measurement') {
 					var mView = new MeasurementView({

@@ -116,14 +116,11 @@
 
 		saveEntity: function(entity) {
 			return $.ajax({
-				url: 'http://localhost:3000/entity/' + entity.get('_id') + '?api-key=' + OvationAPI.userData['api_key'],
+				url: 'http://localhost:3000/entity/' + entity._id + '?api-key=' + OvationAPI.userData['api_key'],
 				type: 'PUT',
 				dataType: 'json',
 				contentType: 'application/json',
-				data: JSON.stringify(entity.toJSON()),
-				success: function(data) {
-					console.log(data);
-				}
+				data: JSON.stringify(entity)
 			});
 		},
 
@@ -134,6 +131,15 @@
 				dataType: 'json',
 				contentType: 'application/json',
 				data: JSON.stringify(entity)
+			});
+		},
+
+		deleteEntity: function(entityId) {
+			return $.ajax({
+				url: 'http://localhost:3000/entity/' + entityId + '?api-key=' + OvationAPI.userData['api_key'],
+				type: 'DELETE',
+				dataType: 'json',
+				contentType: 'application/json'
 			});
 		}
 	}

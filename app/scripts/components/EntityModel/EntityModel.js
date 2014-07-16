@@ -7,35 +7,53 @@ define([
 		return Backbone.Model.extend({
 
 			initialize: function(options) {
-				this.set('attributes', new Backbone.Model());
-				this.set('ui_hints', new Backbone.Model());
-				this.set('links', new Backbone.Model());
-				this.set('named_links', new Backbone.Model());
+				if(this.get('attributes') === undefined) {
+					this.set('attributes', new Backbone.Model());
+				}
+
+				if(this.get('ui_hints') === undefined) {
+					this.set('ui_hints', new Backbone.Model());
+				}
+
+				if(this.get('links') === undefined) {
+					this.set('links', new Backbone.Model());
+				}
+
+				if(this.get('named_links') === undefined) {
+					this.set('named_links', new Backbone.Model());
+				}
 			},
 
 			parse: function(data, options) {
-				var linksArray = [];
+
 				if(data.attributes) {
 
-					// Set attributes
+					if(this.get('attributes') === undefined) {
+						this.set('attributes', new Backbone.Model());
+					}
 					this.get('attributes').set(data.attributes);
 
-					// Set UI hints
-					if(data.ui_hints.primary_link) {
-						data.ui_hints.primary_link = new Backbone.Model(data.ui_hints.primary_link);
-					}
-					if(data.ui_hints.secondary_link) {
-						data.ui_hints.secondary_link = new Backbone.Model(data.ui_hints.secondary_link);
+					if(this.get('ui_hints') === undefined) {
+						this.set('ui_hints', new Backbone.Model());
 					}
 					this.get('ui_hints').set(data.ui_hints);
 
-					// Set links
+					if(this.get('links') === undefined) {
+						this.set('links', new Backbone.Model());
+					}
 					this.get('links').set(data.links);
 
+					if(this.get('named_links') === undefined) {
+						this.set('named_links', new Backbone.Model());
+					}
+					this.get('named_links').set(data.named_links);
+
 				}
+
 				delete data.attributes;
-				delete data.links;
 				delete data.ui_hints;
+				delete data.links;
+				delete data.named_links;
 				return data;
 			},
 
@@ -46,7 +64,6 @@ define([
 						json[attr] = json[attr].toJSON();
 					}
 				}
-				delete json.ui_hints;
 				return json;
 			}
 
