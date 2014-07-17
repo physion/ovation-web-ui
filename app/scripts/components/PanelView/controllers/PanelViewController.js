@@ -76,7 +76,7 @@ function( Backbone, MainLayout, DefaultPanel, EntitiesPanelView, HistoryView, Ov
 		showProjectsPanel: function() {
 			var self = this;
 			OvationService.getUserProjects().done(function(collection) {
-				self.layout.mainRegion.show(new EntitiesPanelView({ collection: collection, method: OvationService.getUserProjects }));
+				self.layout.mainRegion.show(new EntitiesPanelView({ collection: collection, method: OvationService.getUserProjects, type: 'Project' }));
 				self.historyCollection.add(new Backbone.Model({
 					displayName: 'Projects',
 					url: ''
