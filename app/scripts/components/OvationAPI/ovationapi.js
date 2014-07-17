@@ -125,13 +125,21 @@
 		},
 
 		createEntity: function(entity) {
-			return $.ajax({
+			var deferred = $.Deferred();
+			$.ajax({
 				url: 'http://localhost:3000/entity?api-key=' + OvationAPI.userData['api_key'],
 				type: 'POST',
 				dataType: 'json',
 				contentType: 'application/json',
-				data: JSON.stringify(entity)
+				data: JSON.stringify(entity),
+				success: function(data) {
+					$.each(data, function(i, value) {
+						OvationAPI.convertToUI(value);
+					});
+					deferred.resolve(data);
+				}
 			});
+			return deferred.promise()
 		},
 
 		deleteEntity: function(entityId) {

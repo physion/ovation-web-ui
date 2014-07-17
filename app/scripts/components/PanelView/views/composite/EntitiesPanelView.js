@@ -2,19 +2,22 @@ define([
 	'backbone',
 	'../item/EntityView',
 	'hbs!../../templates/composite/EntitiesPanelViewTemplate',
+	'../noEntityViews/NoProjectView',
 	'communicator',
 	],
-	function( Backbone, EntityView, EntitiesPanelViewTemplate, Communicator ) {
+	function( Backbone, EntityView, EntitiesPanelViewTemplate, NoProjectView, Communicator ) {
 		'use strict';
 
 		return Backbone.Marionette.CompositeView.extend({
 
-			className: 'entitiy-panel-view panel-view',
+			className: 'entity-panel-view panel-view',
 			itemView: EntityView,
 			template: EntitiesPanelViewTemplate,
 
-			initialize: function() {
-				this.displayName = this.collection.at(0).get('type') + 's';
+			initialize: function(options) {
+				if(options.type === 'Project') {
+					this.emptyView = NoProjectView;
+				}
 			},
 
 			/* ui selector cache */

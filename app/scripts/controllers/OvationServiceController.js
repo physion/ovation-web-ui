@@ -164,11 +164,15 @@ define([
 
 			createEntity: function(entity) {
 				var deferred = $.Deferred(),
-					self = this;
+					self = this,
+					saveData = entity.toJSON();
+				delete saveData.ui_hints;
 				OvationAPI.Entity
-					.createEntity(entity.toJSON())
+					.createEntity(saveData)
 					.done(function(data) {
-						deferred.resolve(data);
+						var model = new EntityModel(data[0]),
+							returnModel = OvationServiceIndex.addOrGetModel(model);
+						deferred.resolve(returnModel);
 					});
 				return deferred.promise();
 			}
